@@ -34,7 +34,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
       try {
         const docRef = doc(db, "generated_images", docId);
         
-        // Race condition: If Firestore takes longer than 1.5s (e.g. permission error loop), fail fast.
+        // Race condition: If Firestore takes longer than 1.5s, fail fast.
         const timeoutPromise = new Promise((_, reject) => 
             setTimeout(() => reject(new Error("Firestore timeout")), 1500)
         );
@@ -46,10 +46,10 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
 
         if (docSnap.exists()) {
           cachedUrl = docSnap.data().url;
+          console.log(`Loaded from DB: ${alt}`);
         }
       } catch (firestoreErr) {
-        // Silently ignore DB errors to keep UI smooth
-        // console.debug("Firestore cache skipped:", firestoreErr);
+        // Silently ignore DB errors (offline or permission)
       }
 
       if (cachedUrl) {
@@ -91,16 +91,17 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
           // 3. Try to save to Firestore (Fire and forget, ignoring errors)
           try {
             const docRef = doc(db, "generated_images", docId);
-            // We don't await this if we want to show image ASAP, 
-            // but awaiting ensures we catch save errors without unhandled promise rejections.
-            // Wrapping in try/catch handles the permission-denied error gracefully.
             setDoc(docRef, {
               url: foundImageUrl,
               prompt: prompt,
               createdAt: serverTimestamp()
-            }).catch(() => {}); // catch background error
+            }, { merge: true }).then(() => {
+                console.log(`Saved to DB: ${alt}`);
+            }).catch((err) => {
+                console.warn("Failed to save image to DB:", err);
+            });
           } catch (saveErr) {
-             // Ignore save errors
+             console.warn("Error initiating save to DB:", saveErr);
           }
           
           if (isMounted) setImageUrl(foundImageUrl);

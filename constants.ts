@@ -184,7 +184,7 @@ export const CULTURE_DATA: Content[] = [
     description: "직원들이 직접 배우로 참여한 사내 웹드라마. 조직 내 소통 부재와 세대 갈등을 유쾌하게 풀어낸 수작.",
     tags: ['#Director', '#Culture', '#Drama'],
     imageUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of a film clapperboard (slate) front view, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
+    imagePrompt: "A 2D flat minimalist illustration of a film set with a director chair and a camera, red and white color palette, dark background, clean geometric shapes, modern graphic design.",
     category: 'culture',
     matchScore: 99,
     year: '2024'
