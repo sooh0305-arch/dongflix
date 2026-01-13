@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { GoogleGenAI } from "@google/genai";
-import { Loader2, Wand2 } from 'lucide-react';
+import { Loader2, Wand2, AlertCircle } from 'lucide-react';
+import { db } from '../firebase';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 interface AIGeneratedImageProps {
   prompt: string;
@@ -14,17 +16,57 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [isQuotaExceeded, setIsQuotaExceeded] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
-    const generateImage = async () => {
+    const fetchAndGenerate = async () => {
+      setLoading(true);
+      setError(false);
+      setIsQuotaExceeded(false);
+
+      // Sanitize prompt for doc ID
+      const docId = btoa(unescape(encodeURIComponent(prompt))).substring(0, 120);
+      let cachedUrl = null;
+
+      // 1. Try to fetch from Firestore Cache with Timeout
+      try {
+        const docRef = doc(db, "generated_images", docId);
+        
+        // Race condition: If Firestore takes longer than 1.5s (e.g. permission error loop), fail fast.
+        const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error("Firestore timeout")), 1500)
+        );
+
+        const docSnap: any = await Promise.race([
+            getDoc(docRef),
+            timeoutPromise
+        ]);
+
+        if (docSnap.exists()) {
+          cachedUrl = docSnap.data().url;
+        }
+      } catch (firestoreErr) {
+        // Silently ignore DB errors to keep UI smooth
+        // console.debug("Firestore cache skipped:", firestoreErr);
+      }
+
+      if (cachedUrl) {
+        if (isMounted) {
+          setImageUrl(cachedUrl);
+          setLoading(false);
+        }
+        return;
+      }
+
+      // 2. If not in cache, generate using Gemini
       try {
         const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
         const response = await ai.models.generateContent({
           model: 'gemini-2.5-flash-image',
           contents: {
-            parts: [{ text: prompt }],
+            parts: [{ text: `${prompt} | 2D flat minimalist illustration, red and white palette, dark background` }],
           },
           config: {
             imageConfig: {
@@ -36,27 +78,50 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
         if (!isMounted) return;
 
         let foundImageUrl = null;
-        for (const part of response.candidates[0].content.parts) {
-          if (part.inlineData) {
-            foundImageUrl = `data:image/png;base64,${part.inlineData.data}`;
-            break;
+        if (response.candidates?.[0]?.content?.parts) {
+          for (const part of response.candidates[0].content.parts) {
+            if (part.inlineData) {
+              foundImageUrl = `data:image/png;base64,${part.inlineData.data}`;
+              break;
+            }
           }
         }
 
         if (foundImageUrl) {
-          setImageUrl(foundImageUrl);
+          // 3. Try to save to Firestore (Fire and forget, ignoring errors)
+          try {
+            const docRef = doc(db, "generated_images", docId);
+            // We don't await this if we want to show image ASAP, 
+            // but awaiting ensures we catch save errors without unhandled promise rejections.
+            // Wrapping in try/catch handles the permission-denied error gracefully.
+            setDoc(docRef, {
+              url: foundImageUrl,
+              prompt: prompt,
+              createdAt: serverTimestamp()
+            }).catch(() => {}); // catch background error
+          } catch (saveErr) {
+             // Ignore save errors
+          }
+          
+          if (isMounted) setImageUrl(foundImageUrl);
         } else {
           setError(true);
         }
-      } catch (err) {
-        console.error("Image generation failed:", err);
-        if (isMounted) setError(true);
+      } catch (err: any) {
+        console.error("Image generation process failed:", err);
+        if (isMounted) {
+          // Check for quota error (429)
+          if (err?.message?.includes('429') || err?.status === 429) {
+            setIsQuotaExceeded(true);
+          }
+          setError(true);
+        }
       } finally {
         if (isMounted) setLoading(false);
       }
     };
 
-    generateImage();
+    fetchAndGenerate();
 
     return () => {
       isMounted = false;
@@ -68,7 +133,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
       <div className={`flex flex-col items-center justify-center bg-[#1a1a1a] ${className}`}>
         <Loader2 className="w-8 h-8 text-[#E50914] animate-spin mb-2" />
         <div className="flex items-center gap-1.5 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
-          <Wand2 className="w-3 h-3" /> AI Drawing...
+          <Wand2 className="w-3 h-3" /> Art Rendering...
         </div>
       </div>
     );
@@ -76,11 +141,20 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
 
   if (error || !imageUrl) {
     return (
-      <img
-        src={fallbackUrl}
-        alt={alt}
-        className={`${className} object-cover grayscale opacity-50`}
-      />
+      <div className="relative w-full h-full group">
+        <img
+          src={fallbackUrl}
+          alt={alt}
+          className={`${className} object-cover grayscale opacity-50`}
+        />
+        {isQuotaExceeded && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 p-4 text-center">
+            <AlertCircle className="w-6 h-6 text-[#E50914] mb-1" />
+            <p className="text-[10px] text-white font-bold uppercase tracking-tight">API 할당량 초과</p>
+            <p className="text-[8px] text-gray-300 mt-1 leading-tight">임시 이미지를 표시합니다.<br/>나중에 다시 시도해주세요.</p>
+          </div>
+        )}
+      </div>
     );
   }
 
