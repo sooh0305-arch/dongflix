@@ -26,17 +26,23 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
       setError(false);
       setIsQuotaExceeded(false);
 
-      // Sanitize prompt for doc ID
-      const docId = btoa(unescape(encodeURIComponent(prompt))).substring(0, 120);
+      // 1. Create a safe Doc ID
+      // Encode prompt to base64 to create a unique ID, but replace '/' with '-' to prevent Firestore path issues.
+      const safeId = btoa(unescape(encodeURIComponent(prompt)))
+        .replace(/\//g, '-')  // Replace slashes
+        .replace(/\+/g, '_')  // Replace pluses
+        .substring(0, 150);   // Limit length
+        
+      const docId = `img_${safeId}`;
       let cachedUrl = null;
 
-      // 1. Try to fetch from Firestore Cache with Timeout
+      // 2. Try to fetch from Firestore Cache with Timeout
       try {
         const docRef = doc(db, "generated_images", docId);
         
-        // Race condition: If Firestore takes longer than 1.5s, fail fast.
+        // Increased timeout to 3000ms to give Firestore more time on slow connections
         const timeoutPromise = new Promise((_, reject) => 
-            setTimeout(() => reject(new Error("Firestore timeout")), 1500)
+            setTimeout(() => reject(new Error("Firestore timeout")), 3000)
         );
 
         const docSnap: any = await Promise.race([
@@ -45,11 +51,14 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
         ]);
 
         if (docSnap.exists()) {
-          cachedUrl = docSnap.data().url;
-          console.log(`Loaded from DB: ${alt}`);
+          const data = docSnap.data();
+          if (data.url) {
+            cachedUrl = data.url;
+            console.log(`[Cache Hit] Loaded from DB: ${alt.substring(0, 20)}...`);
+          }
         }
       } catch (firestoreErr) {
-        // Silently ignore DB errors (offline or permission)
+        console.warn(`[Cache Miss] Could not read from DB (${alt}):`, firestoreErr);
       }
 
       if (cachedUrl) {
@@ -60,13 +69,15 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
         return;
       }
 
-      // 2. If not in cache, generate using Gemini
+      // 3. If not in cache, generate using Gemini
+      console.log(`[Generating] Requesting AI image for: ${alt}`);
+      
       try {
         const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
         const response = await ai.models.generateContent({
           model: 'gemini-2.5-flash-image',
           contents: {
-            parts: [{ text: `${prompt} | 2D flat minimalist illustration, red and white palette, dark background` }],
+            parts: [{ text: `${prompt} | 2D flat minimalist illustration, red and white palette, dark background, high quality` }],
           },
           config: {
             imageConfig: {
@@ -88,24 +99,31 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
         }
 
         if (foundImageUrl) {
-          // 3. Try to save to Firestore (Fire and forget, ignoring errors)
+          // 4. Try to save to Firestore
           try {
             const docRef = doc(db, "generated_images", docId);
-            setDoc(docRef, {
-              url: foundImageUrl,
-              prompt: prompt,
-              createdAt: serverTimestamp()
-            }, { merge: true }).then(() => {
-                console.log(`Saved to DB: ${alt}`);
-            }).catch((err) => {
-                console.warn("Failed to save image to DB:", err);
-            });
-          } catch (saveErr) {
-             console.warn("Error initiating save to DB:", saveErr);
+            // Check approximate size (Firestore limit is 1MB)
+            if (foundImageUrl.length > 1000000) {
+                console.warn("Image too large for Firestore, skipping save.");
+            } else {
+                await setDoc(docRef, {
+                  url: foundImageUrl,
+                  prompt: prompt,
+                  createdAt: serverTimestamp(),
+                  version: "2.0"
+                }, { merge: true });
+                console.log(`[Saved] Successfully saved to DB: ${alt}`);
+            }
+          } catch (saveErr: any) {
+             console.error("FAILED to save image to DB. Check Firestore Rules.", saveErr);
+             if (saveErr.code === 'permission-denied') {
+                 console.error(">> ACTION REQUIRED: Go to Firebase Console -> Firestore -> Rules and allow read/write.");
+             }
           }
           
           if (isMounted) setImageUrl(foundImageUrl);
         } else {
+          console.error("No image data found in AI response");
           setError(true);
         }
       } catch (err: any) {
@@ -113,6 +131,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
         if (isMounted) {
           // Check for quota error (429)
           if (err?.message?.includes('429') || err?.status === 429) {
+            console.warn("Quota exceeded for AI generation.");
             setIsQuotaExceeded(true);
           }
           setError(true);
@@ -127,7 +146,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
     return () => {
       isMounted = false;
     };
-  }, [prompt]);
+  }, [prompt, alt]);
 
   if (loading) {
     return (
@@ -152,7 +171,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 p-4 text-center">
             <AlertCircle className="w-6 h-6 text-[#E50914] mb-1" />
             <p className="text-[10px] text-white font-bold uppercase tracking-tight">API 할당량 초과</p>
-            <p className="text-[8px] text-gray-300 mt-1 leading-tight">임시 이미지를 표시합니다.<br/>나중에 다시 시도해주세요.</p>
+            <p className="text-[8px] text-gray-300 mt-1 leading-tight">DB 저장 실패 또는<br/>요청 횟수 초과입니다.</p>
           </div>
         )}
       </div>

@@ -16,6 +16,8 @@ import {
   TECH_DATA, 
   CULTURE_DATA 
 } from './constants';
+import { db } from './firebase'; 
+import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
 
 function App() {
   const [showIntro, setShowIntro] = useState(() => {
@@ -25,6 +27,32 @@ function App() {
   const [modalContent, setModalContent] = useState<Content | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Firebase connection & Permission check
+  useEffect(() => {
+    const checkDbConnection = async () => {
+      if (db) {
+        console.log("🔥 Firebase instance found.");
+        try {
+          // Try to write a tiny test document to verify permissions
+          await setDoc(doc(db, "connection_test", "status"), {
+            connected: true,
+            timestamp: new Date().toISOString()
+          });
+          console.log("✅ DB WRITE SUCCESS: Firebase is connected and writable.");
+        } catch (e: any) {
+          console.error("❌ DB WRITE FAILED: Check your Firestore Security Rules!", e);
+          if (e.code === 'permission-denied') {
+            alert("DB 연결 실패: 권한이 없습니다. Firebase Console > Firestore > Rules 에서 'allow read, write: if true;' 로 설정해주세요.");
+          }
+        }
+      } else {
+        console.error("❌ Firebase failed to initialize.");
+      }
+    };
+    
+    checkDbConnection();
+  }, []);
 
   const handleIntroComplete = () => {
     sessionStorage.setItem('dong-flix-intro-shown', 'true');
