@@ -1,9 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { GoogleGenAI } from "@google/genai";
-import { Loader2, Wand2, AlertCircle } from 'lucide-react';
-import { db } from '../firebase';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { Loader2, Wand2 } from 'lucide-react';
 
 interface AIGeneratedImageProps {
   prompt: string;
@@ -15,69 +13,60 @@ interface AIGeneratedImageProps {
 const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, className, fallbackUrl }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [isQuotaExceeded, setIsQuotaExceeded] = useState(false);
+  const [useFallback, setUseFallback] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
+    const SESSION_KEY = 'gemini_quota_exceeded';
 
     const fetchAndGenerate = async () => {
-      setLoading(true);
-      setError(false);
-      setIsQuotaExceeded(false);
-
-      // 1. Create a safe Doc ID
-      // Encode prompt to base64 to create a unique ID, but replace '/' with '-' to prevent Firestore path issues.
-      const safeId = btoa(unescape(encodeURIComponent(prompt)))
-        .replace(/\//g, '-')  // Replace slashes
-        .replace(/\+/g, '_')  // Replace pluses
-        .substring(0, 150);   // Limit length
-        
-      const docId = `img_${safeId}`;
-      let cachedUrl = null;
-
-      // 2. Try to fetch from Firestore Cache with Timeout
-      try {
-        const docRef = doc(db, "generated_images", docId);
-        
-        // Increased timeout to 3000ms to give Firestore more time on slow connections
-        const timeoutPromise = new Promise((_, reject) => 
-            setTimeout(() => reject(new Error("Firestore timeout")), 3000)
-        );
-
-        const docSnap: any = await Promise.race([
-            getDoc(docRef),
-            timeoutPromise
-        ]);
-
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          if (data.url) {
-            cachedUrl = data.url;
-            console.log(`[Cache Hit] Loaded from DB: ${alt.substring(0, 20)}...`);
+      // 이미 할당량이 초과된 것으로 기록되어 있으면 바로 폴백 이미지 사용
+      if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+          if (isMounted) {
+            setUseFallback(true);
+            setLoading(false);
           }
-        }
-      } catch (firestoreErr) {
-        console.warn(`[Cache Miss] Could not read from DB (${alt}):`, firestoreErr);
+          return;
       }
 
-      if (cachedUrl) {
-        if (isMounted) {
-          setImageUrl(cachedUrl);
-          setLoading(false);
-        }
-        return;
-      }
-
-      // 3. If not in cache, generate using Gemini
-      console.log(`[Generating] Requesting AI image for: ${alt}`);
+      setLoading(true);
       
       try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        // 안전한 API KEY 접근 (브라우저 환경 호환)
+        let apiKey = '';
+        
+        // 1. process.env 체크 (Node/Webpack 등)
+        if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+            apiKey = process.env.API_KEY;
+        } 
+        // 2. import.meta.env 체크 (Vite 등)
+        else {
+            try {
+                // @ts-ignore
+                if (import.meta && import.meta.env && import.meta.env.API_KEY) {
+                    // @ts-ignore
+                    apiKey = import.meta.env.API_KEY;
+                }
+            } catch (e) {
+                // import.meta가 지원되지 않는 환경 무시
+            }
+        }
+
+        if (!apiKey) {
+           // 키가 없으면 조용히 폴백으로 전환 (에러 발생시키지 않음)
+           console.warn("API Key not found, using fallback image.");
+           if (isMounted) {
+             setUseFallback(true);
+             setLoading(false);
+           }
+           return;
+        }
+
+        const ai = new GoogleGenAI({ apiKey });
         const response = await ai.models.generateContent({
           model: 'gemini-2.5-flash-image',
           contents: {
-            parts: [{ text: `${prompt} | 2D flat minimalist illustration, red and white palette, dark background, high quality` }],
+            parts: [{ text: `${prompt} | 2D flat minimalist illustration, red neon and black dark grey theme, high quality, cinematic lighting, vector graphic style` }],
           },
           config: {
             imageConfig: {
@@ -99,42 +88,18 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
         }
 
         if (foundImageUrl) {
-          // 4. Try to save to Firestore
-          try {
-            const docRef = doc(db, "generated_images", docId);
-            // Check approximate size (Firestore limit is 1MB)
-            if (foundImageUrl.length > 1000000) {
-                console.warn("Image too large for Firestore, skipping save.");
-            } else {
-                await setDoc(docRef, {
-                  url: foundImageUrl,
-                  prompt: prompt,
-                  createdAt: serverTimestamp(),
-                  version: "2.0"
-                }, { merge: true });
-                console.log(`[Saved] Successfully saved to DB: ${alt}`);
-            }
-          } catch (saveErr: any) {
-             console.error("FAILED to save image to DB. Check Firestore Rules.", saveErr);
-             if (saveErr.code === 'permission-denied') {
-                 console.error(">> ACTION REQUIRED: Go to Firebase Console -> Firestore -> Rules and allow read/write.");
-             }
-          }
-          
           if (isMounted) setImageUrl(foundImageUrl);
         } else {
-          console.error("No image data found in AI response");
-          setError(true);
+          if (isMounted) setUseFallback(true);
         }
       } catch (err: any) {
-        console.error("Image generation process failed:", err);
+        console.warn(`[AI GEN FAILED] ${alt}`, err);
         if (isMounted) {
-          // Check for quota error (429)
+          // 429 에러(Quota Exceeded) 발생 시 세션에 기록하여 재시도 방지
           if (err?.message?.includes('429') || err?.status === 429) {
-            console.warn("Quota exceeded for AI generation.");
-            setIsQuotaExceeded(true);
+            sessionStorage.setItem(SESSION_KEY, 'true');
           }
-          setError(true);
+          setUseFallback(true);
         }
       } finally {
         if (isMounted) setLoading(false);
@@ -151,30 +116,21 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
   if (loading) {
     return (
       <div className={`flex flex-col items-center justify-center bg-[#1a1a1a] ${className}`}>
-        <Loader2 className="w-8 h-8 text-[#E50914] animate-spin mb-2" />
-        <div className="flex items-center gap-1.5 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
-          <Wand2 className="w-3 h-3" /> Art Rendering...
+        <Loader2 className="w-6 h-6 text-[#E50914] animate-spin mb-2" />
+        <div className="flex items-center gap-1.5 text-[10px] text-gray-400 uppercase tracking-widest font-bold animate-pulse">
+          <Wand2 className="w-3 h-3" /> Generating...
         </div>
       </div>
     );
   }
 
-  if (error || !imageUrl) {
+  if (useFallback || !imageUrl) {
     return (
-      <div className="relative w-full h-full group">
         <img
           src={fallbackUrl}
           alt={alt}
-          className={`${className} object-cover grayscale opacity-50`}
+          className={`${className} object-cover`}
         />
-        {isQuotaExceeded && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 p-4 text-center">
-            <AlertCircle className="w-6 h-6 text-[#E50914] mb-1" />
-            <p className="text-[10px] text-white font-bold uppercase tracking-tight">API 할당량 초과</p>
-            <p className="text-[8px] text-gray-300 mt-1 leading-tight">DB 저장 실패 또는<br/>요청 횟수 초과입니다.</p>
-          </div>
-        )}
-      </div>
     );
   }
 

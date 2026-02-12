@@ -2,7 +2,6 @@
 import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Content, RowProps } from '../types';
-import AIGeneratedImage from './AIGeneratedImage';
 
 const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentClick }) => {
   const rowRef = useRef<HTMLDivElement>(null);
@@ -61,22 +60,13 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
                     </div>
                 </div>
               ) : (
-                // Standard Image Layout for other rows
+                // Standard Image Layout
                 <>
-                    {item.imagePrompt ? (
-                      <AIGeneratedImage 
-                        prompt={item.imagePrompt}
-                        alt={item.title}
-                        className="w-full h-full"
-                        fallbackUrl={item.imageUrl}
-                      />
-                    ) : (
-                      <img
-                          src={item.imageUrl}
-                          alt={item.title}
-                          className="w-full h-full object-cover shadow-md brightness-[0.8]"
-                      />
-                    )}
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      className="w-full h-full object-cover shadow-md brightness-[0.8]"
+                    />
                     
                     {/* Hover Overlay - Only on Desktop */}
                     <div className="hidden md:flex absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex-col justify-end p-3">
@@ -87,7 +77,7 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
                             </div>
                         </div>
                     </div>
-                    {/* Mobile Only Title Overlay (Always visible but subtle) */}
+                    {/* Mobile Only Title Overlay */}
                     <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
                         <p className="text-white text-[10px] font-bold truncate">{item.title}</p>
                     </div>
@@ -107,3 +97,4 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
 };
 
 export default Row;
+    

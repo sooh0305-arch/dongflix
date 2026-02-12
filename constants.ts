@@ -25,6 +25,7 @@ export const HERO_CONTENT: Content = {
     }
   ],
   education: [
+    "2026년 한성대학교 ICT융합디자인 재학중",
     "2019년 청강문화산업대학교 만화창작과 졸업"
   ],
   certifications: [
@@ -35,10 +36,10 @@ export const HERO_CONTENT: Content = {
 export const TRENDING_DATA: Content[] = [
   {
     id: 't-1',
-    title: "산업/일자리 전환 지원금 확보",
+    title: "산업/일자리 전환 지원금 확보 & DX 역량 강화",
     subtitle: "2025 산업전환 지원사업 선정 (연간 9,560만원)",
-    description: "고용노동부 주관 산업전환 공동훈련센터 사업 선정으로 연간 9,560만원의 정부 지원금을 확보했습니다. 이와 연계하여 전사 AI 리터러시 교육 운영 및 진행을 총괄하며 디지털 전환의 토대를 마련했습니다.",
-    tags: ['#성과', '#Funding', '#AI_Literacy'],
+    description: "고용노동부 주관 산업전환 공동훈련센터 사업 선정으로 연간 9,560만원의 정부 지원금을 확보했습니다. 이를 기반으로 리더 및 매니저 대상 AI 리터러시 교육을 총괄 기획·운영하였으며, 기업기술가치평가사 자격 취득 및 DT Change Agent 육성 과정을 주도하여 조직 전반의 디지털 전환 수용성과 기술 가치 판단 역량을 획기적으로 강화했습니다.",
+    tags: ['#성과', '#AI_Literacy', '#DT_Agent', '#기술가치평가'],
     imageUrl: "https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=800&auto=format&fit=crop",
     category: 'trending',
     rank: 1,
@@ -90,8 +91,7 @@ export const ORIGINALS_DATA: Content[] = [
     subtitle: "Motion, Variety, Product Video",
     description: "모션그래픽부터 사내 예능, 고퀄리티 제품 영상까지 다양한 포맷의 영상 콘텐츠를 제작합니다.",
     tags: ['#Video', '#Production', '#Editing'],
-    imageUrl: "https://images.unsplash.com/photo-1492619334760-22402c01594e?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of a professional cinematic camera lens front view, focus on circular glass lens, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%98%81%EC%83%81%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=a7c29274-cdab-445d-8b3f-7643ec08de81",
     category: 'originals',
     matchScore: 99,
     contentType: 'video',
@@ -107,8 +107,7 @@ export const ORIGINALS_DATA: Content[] = [
     subtitle: "Micro Learning & Branding",
     description: "바쁜 업무 중에도 핵심 내용을 놓치지 않도록 직관적인 디자인의 카드뉴스를 제작합니다.",
     tags: ['#Design', '#CardNews', '#Marketing'],
-    imageUrl: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of newspaper pages and news cards flipping through the air, dynamic motion, modern information design, red and white color palette, dark background, clean geometric shapes.",
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=6f1719aa-c439-49b7-8e73-e421740b83ea",
     category: 'originals',
     matchScore: 96,
     contentType: 'card',
@@ -124,8 +123,7 @@ export const ORIGINALS_DATA: Content[] = [
     subtitle: "Story-telling Education",
     description: "어려운 정보도 만화 형식을 통해 친근하고 재미있게 전달하는 교육 웹툰 시리즈입니다.",
     tags: ['#Webtoon', '#Illustration', '#Story'],
-    imageUrl: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of a hand holding a digital drawing pen sketching a webtoon on a tablet screen, lineless art style, no outlines, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%9B%B9%ED%88%B0%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=a82e9ce7-133a-4926-ae49-4c8307c871ee",
     category: 'originals',
     matchScore: 98,
     contentType: 'webtoon',
@@ -139,13 +137,23 @@ export const ORIGINALS_DATA: Content[] = [
 
 export const TECH_DATA: Content[] = [
   {
+    id: 'tech-3',
+    title: "AI 활용 웹페이지 제작",
+    subtitle: "Gemini API 기반 지능형 포트폴리오 구축",
+    description: "LLM(Gemini)과 최신 웹 기술을 결합하여 동적인 사용자 경험을 선사하는 웹 애플리케이션을 제작합니다. AI를 활용한 자동 콘텐츠 생성 및 인터랙티브 UI 설계를 통해 효율적인 개발 프로세스를 구축했습니다.",
+    tags: ['#Gemini_API', '#Web_Dev', '#React', '#AI_Automation'],
+    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+    category: 'tech',
+    matchScore: 100,
+    year: '2026'
+  },
+  {
     id: 'tech-1',
     title: "AI 리터러시 교육",
     subtitle: "리더/매니저 대상 프롬프트 엔지니어링",
     description: "ChatGPT, Claude 등을 활용한 업무 효율화 워크샵 진행. 리더급 대상 의사결정 지원 AI 활용법 전파.",
     tags: ['#AI', '#Lecture', '#Prompt'],
     imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of a human brain silhouette with circuit patterns inside, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
     category: 'tech',
     matchScore: 98,
     year: '2025'
@@ -157,22 +165,9 @@ export const TECH_DATA: Content[] = [
     description: "데이터 시각화 도구 Tableau의 고급 기능을 활용한 데이터 분석 및 인사이트 도출 역량 강화 과정을 기획·운영했습니다.",
     tags: ['#Data', '#Tableau', '#Expert'],
     imageUrl: "https://images.unsplash.com/photo-1551288049-bbbda50a5f4a?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of digital charts and graphs on a screen, data visualization concept, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
     category: 'tech',
     matchScore: 95,
     year: '2024'
-  },
-  {
-    id: 'tech-3',
-    title: "AI 활용 웹페이지 제작",
-    subtitle: "Next.js & AI Agent 기반 포트폴리오",
-    description: "Gemini API와 AI 에이전트를 활용하여 실시간 이미지 생성 및 동적 콘텐츠 관리가 가능한 현대적인 웹 애플리케이션을 제작했습니다.",
-    tags: ['#Web_Dev', '#AI_Agent', '#NextJS'],
-    imageUrl: "https://images.unsplash.com/photo-1518433278983-bc62803275ad?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of a web browser window with AI sparkles and code symbols, modern web development concept, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
-    category: 'tech',
-    matchScore: 97,
-    year: '2025'
   }
 ];
 
@@ -184,40 +179,30 @@ export const CULTURE_DATA: Content[] = [
     description: "직원들이 직접 배우로 참여한 사내 웹드라마. 조직 내 소통 부재와 세대 갈등을 유쾌하게 풀어낸 수작.",
     tags: ['#Director', '#Culture', '#Drama'],
     imageUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of a film set with a director chair and a camera, red and white color palette, dark background, clean geometric shapes, modern graphic design.",
     category: 'culture',
     matchScore: 99,
     year: '2024'
   },
   {
     id: 'cul-2',
-    title: "팀플데이 스케치",
-    subtitle: "전사 워크샵 하이라이트",
-    description: "딱딱한 워크샵이 아닌, 모두가 즐기는 축제 같은 팀플데이 현장을 역동적인 영상으로 기록했습니다.",
-    tags: ['#Event', '#Video', '#TeamBuilding'],
-    imageUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of stylized human figures connecting as puzzle pieces or high-fiving, team collaboration concept, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
+    title: "조직문화 포스터",
+    subtitle: "비주얼 커뮤니케이션 가치 전파",
+    description: "핵심 가치를 시각적으로 형상화하여 사무 공간에 배치함으로써 임직원들이 기업 문화를 자연스럽게 내재화하도록 돕는 포스터 시리즈입니다.",
+    tags: ['#Visual', '#Design', '#Values'],
+    imageUrl: "https://images.unsplash.com/photo-1572044162444-ad60f128bde2?q=80&w=800&auto=format&fit=crop",
     category: 'culture',
-    matchScore: 93,
-    year: '2023'
+    matchScore: 95,
+    year: '2024'
   },
   {
     id: 'cul-3',
-    title: "조직문화 포스터",
-    subtitle: "핵심가치 내재화 캠페인",
-    description: "회사의 핵심가치를 시각적으로 표현한 포스터 시리즈 제작 및 사내 게시.",
-    tags: ['#Design', '#CoreValue', '#Campaign'],
-    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
-    imagePrompt: "A 2D flat minimalist illustration of a graphic design poster frame on a wall showing abstract icons, branding and identity concept, modern graphic design, red and white color palette, dark background, clean geometric shapes.",
+    title: "조직문화 활동",
+    subtitle: "함께 즐기고 소통하는 건강한 문화",
+    description: "타운홀 미팅, 팀 빌딩 이벤트 등 구성원 간의 유대감을 강화하고 소속감을 고취하는 다채로운 조직 활성화 프로그램을 기획하고 운영합니다.",
+    tags: ['#Activity', '#Networking', '#Teamwork'],
+    imageUrl: "https://images.unsplash.com/photo-1528605248644-14dd0432211e?q=80&w=800&auto=format&fit=crop",
     category: 'culture',
-    matchScore: 90,
-    year: '2024'
+    matchScore: 97,
+    year: '2025'
   }
-];
-
-export const ALL_CONTENT = [
-    ...TRENDING_DATA,
-    ...ORIGINALS_DATA,
-    ...TECH_DATA,
-    ...CULTURE_DATA
 ];

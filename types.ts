@@ -22,7 +22,7 @@ export interface Content {
   description: string;
   tags: string[];
   imageUrl: string;
-  imagePrompt?: string; // Prompt for Gemini AI image generation
+  imagePrompt?: string; // Prompt for AI generation
   videoUrl?: string; 
   category: string;
   rank?: number; 
