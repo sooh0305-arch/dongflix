@@ -1,7 +1,8 @@
 
 import React, { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, TrendingUp } from 'lucide-react';
 import { Content, RowProps } from '../types';
+import AIGeneratedImage from './AIGeneratedImage';
 
 const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentClick }) => {
   const rowRef = useRef<HTMLDivElement>(null);
@@ -21,9 +22,9 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
 
   return (
     <div className="space-y-2 md:space-y-4 px-4 md:px-12 my-2 md:my-8 group relative z-20">
-      <h2 className="w-full md:w-fit cursor-pointer text-base md:text-2xl font-bold text-[#e5e5e5] transition duration-200 hover:text-white mb-1 md:mb-3 flex items-end gap-2">
+      <h2 className="w-full md:w-fit cursor-pointer text-base md:text-2xl font-bold text-[#e5e5e5] transition duration-200 hover:text-white mb-1 md:mb-3 flex items-end gap-2 text-shadow-sm">
         {title}
-        {isRanked && <span className="hidden md:inline text-xs font-normal text-[#E50914] border border-[#E50914] px-1 ml-2">DATA INSIGHT</span>}
+        {isRanked && <span className="hidden md:inline text-[10px] font-bold text-[#E50914] border border-[#E50914] px-1.5 py-0.5 ml-2 tracking-tighter uppercase">KPI Report</span>}
       </h2>
       
       <div className="group/row relative">
@@ -40,45 +41,59 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
             <div 
               key={item.id} 
               className={`relative flex-shrink-0 cursor-pointer transition duration-300 ease-in-out md:hover:scale-105 hover:z-50 rounded-md overflow-hidden
-                ${isRanked ? 'h-28 md:h-40 w-[200px] md:w-[300px]' : 
+                ${isRanked ? 'h-32 md:h-44 w-[220px] md:w-[320px]' : 
                   isLargeRow ? 'h-36 md:h-56 w-[220px] md:w-[380px]' : 'h-24 md:h-36 w-[140px] md:w-[220px]'}`}
               onClick={() => onContentClick(item)}
             >
               {isRanked ? (
-                // Clean Text Card Layout
-                <div className="h-full w-full bg-[#2a2a2a] p-3 md:p-4 flex flex-col justify-between border-l-4 border-[#E50914] shadow-xl">
-                    <div>
-                        <p className="text-[#46d369] font-bold text-[10px] md:text-sm mb-0.5 md:mb-1">기여도 {item.matchScore}%</p>
-                        <h3 className="text-white font-bold text-sm md:text-lg line-clamp-2 leading-tight">{item.title}</h3>
+                // HRD Achievement Card (Ranked) - Clean Version without Amount
+                <div className="h-full w-full bg-[#1f1f1f] p-3 md:p-5 flex flex-col justify-between border-l-[6px] border-[#E50914] shadow-2xl relative group/card">
+                    <div className="absolute top-3 right-3 opacity-20">
+                        <TrendingUp className="w-10 h-10 text-white" />
                     </div>
-                    <div className="flex flex-wrap gap-1 mt-1 md:mt-2">
-                        {item.tags.slice(0, 2).map((tag, idx) => (
-                            <span key={idx} className="text-[8px] md:text-[10px] text-gray-400 border border-gray-600 px-1 py-0.5 rounded leading-none">
-                                {tag.replace('#','')}
-                            </span>
-                        ))}
+                    <div>
+                        <div className="flex items-center gap-2 mb-1.5">
+                            <span className="text-[#46d369] font-black text-[10px] md:text-xs">기여도 {item.matchScore}%</span>
+                            <span className="text-gray-500 text-[9px] md:text-[10px]">{item.year}</span>
+                        </div>
+                        <h3 className="text-white font-bold text-sm md:text-xl line-clamp-2 leading-snug group-hover/card:text-[#E50914] transition-colors">{item.title}</h3>
+                    </div>
+                    
+                    <div className="space-y-2">
+                        <div className="flex flex-wrap gap-1">
+                            {item.tags.slice(0, 3).map((tag, idx) => (
+                                <span key={idx} className="text-[8px] md:text-[10px] text-gray-500 bg-white/5 px-1.5 py-0.5 rounded leading-none">
+                                    {tag.replace('#','')}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
               ) : (
-                // Standard Image Layout
+                // Creative Content Layout (Standard Image or AI Generated)
                 <>
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      className="w-full h-full object-cover shadow-md brightness-[0.8]"
-                    />
-                    
-                    {/* Hover Overlay - Only on Desktop */}
-                    <div className="hidden md:flex absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex-col justify-end p-3">
-                        <div className="text-xs font-bold transform translate-y-2 hover:translate-y-0 transition duration-300">
-                            <p className="text-white text-[10px] md:text-xs mb-1 line-clamp-1">{item.title}</p>
-                            <div className="flex flex-wrap gap-1">
-                                <span className="text-[#46d369] text-[10px]">기여도 {item.matchScore}%</span>
-                            </div>
+                    {item.imagePrompt ? (
+                        <AIGeneratedImage 
+                            prompt={item.imagePrompt} 
+                            alt={item.title}
+                            className="w-full h-full object-cover shadow-md brightness-[0.8]"
+                            fallbackUrl={item.imageUrl}
+                        />
+                    ) : (
+                        <img
+                          src={item.imageUrl}
+                          alt={item.title}
+                          className="w-full h-full object-cover shadow-md brightness-[0.8]"
+                          referrerPolicy="no-referrer"
+                        />
+                    )}
+                    <div className="hidden md:flex absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex-col justify-end p-4">
+                        <div className="transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            <p className="text-white font-bold text-xs md:text-sm mb-1">{item.title}</p>
+                            <span className="text-[#46d369] text-[10px] font-bold">기여도 {item.matchScore}%</span>
                         </div>
                     </div>
-                    {/* Mobile Only Title Overlay */}
-                    <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                    <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/90 to-transparent">
                         <p className="text-white text-[10px] font-bold truncate">{item.title}</p>
                     </div>
                 </>
@@ -97,4 +112,3 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
 };
 
 export default Row;
-    

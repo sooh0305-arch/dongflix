@@ -18,9 +18,7 @@ import {
 } from './constants';
 
 function App() {
-  const [showIntro, setShowIntro] = useState(() => {
-    return !sessionStorage.getItem('dong-flix-intro-shown');
-  });
+  const [showIntro, setShowIntro] = useState(true);
   const [showLanding, setShowLanding] = useState(true);
   const [modalContent, setModalContent] = useState<Content | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -86,7 +84,7 @@ function App() {
             <div className="relative z-10 mt-16 md:mt-24 lg:mt-32 space-y-12 md:space-y-20 pb-20">
               <section id="hrd">
                 <Row 
-                  title="HRD 시리즈: 교육 운영 & 성과" 
+                  title="HRD 시리즈" 
                   data={TRENDING_DATA} 
                   isRanked={true}
                   onContentClick={handleOpenModal}
@@ -94,7 +92,7 @@ function App() {
               </section>
               <section id="creative">
                 <Row 
-                  title="크리에이티브: 온라인 콘텐츠 제작" 
+                  title="크리에이티브" 
                   data={ORIGINALS_DATA} 
                   isLargeRow={true} 
                   onContentClick={handleOpenModal}
@@ -102,14 +100,14 @@ function App() {
               </section>
               <section id="tech">
                 <Row 
-                  title="New Releases: AI & Tech" 
+                  title="AI & Tech" 
                   data={TECH_DATA} 
                   onContentClick={handleOpenModal}
                 />
               </section>
               <section id="culture">
                 <Row 
-                  title="Docu-Series: 조직문화" 
+                  title="조직문화" 
                   data={CULTURE_DATA} 
                   onContentClick={handleOpenModal}
                 />

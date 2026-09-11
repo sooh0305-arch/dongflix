@@ -1,6 +1,7 @@
 import React from 'react';
 import { Play, Info } from 'lucide-react';
 import { Content } from '../types';
+import AIGeneratedImage from './AIGeneratedImage';
 
 interface HeroProps {
   content: Content;
@@ -9,22 +10,32 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ content, onInfoClick }) => {
   return (
-    <div className="relative min-h-[80vh] md:min-h-[85vh] lg:h-[95vh] w-full text-white flex flex-col justify-end pb-16 md:pb-32 lg:pb-40">
+    <div className="relative min-h-[80vh] md:min-h-[85vh] lg:h-[95vh] w-full text-white flex flex-col pt-32 md:pt-40 pb-16 md:pb-32 lg:pb-40">
       {/* Background Image Container */}
       <div className="absolute top-0 left-0 w-full h-full -z-10">
-        <img 
-          src={content.imageUrl} 
-          alt={content.title} 
-          className="w-full h-full object-cover brightness-[0.5]"
-        />
+        {content.imagePrompt ? (
+          <AIGeneratedImage 
+            prompt={content.imagePrompt} 
+            alt={content.title}
+            className="w-full h-full object-cover brightness-[0.5]"
+            fallbackUrl={content.imageUrl}
+          />
+        ) : (
+          <img 
+            src={content.imageUrl} 
+            alt={content.title} 
+            className="w-full h-full object-cover brightness-[0.5]"
+            referrerPolicy="no-referrer"
+          />
+        )}
         {/* Stronger Bottom Gradient to blend into the rows */}
         <div className="absolute bottom-0 w-full h-[60%] bg-gradient-to-t from-[#141414] via-[#141414]/80 to-transparent"></div>
         {/* Top Gradient for Navbar readability */}
-        <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent"></div>
+        <div className="absolute top-0 w-full h-32 md:h-48 bg-gradient-to-b from-black/90 via-black/50 to-transparent"></div>
       </div>
 
       {/* Content Container */}
-      <div className="relative px-4 md:px-12 max-w-4xl w-full z-10 animate-fade-in">
+      <div className="relative px-4 md:px-12 max-w-4xl w-full z-10 animate-fade-in mt-auto">
         
         {/* Series Logo Type */}
         <div className="flex items-center space-x-1 mb-2 md:mb-3">

@@ -36,61 +36,86 @@ export const HERO_CONTENT: Content = {
 export const TRENDING_DATA: Content[] = [
   {
     id: 't-1',
-    title: "산업/일자리 전환 지원금 확보 & DX 역량 강화",
-    subtitle: "2025 산업전환 지원사업 선정 (연간 9,560만원)",
-    description: "고용노동부 주관 산업전환 공동훈련센터 사업 선정으로 연간 9,560만원의 정부 지원금을 확보했습니다. 이를 기반으로 리더 및 매니저 대상 AI 리터러시 교육을 총괄 기획·운영하였으며, 기업기술가치평가사 자격 취득 및 DT Change Agent 육성 과정을 주도하여 조직 전반의 디지털 전환 수용성과 기술 가치 판단 역량을 획기적으로 강화했습니다.",
-    tags: ['#성과', '#AI_Literacy', '#DT_Agent', '#기술가치평가'],
+    title: "정부지원훈련 운영 및 교육비 관리",
+    subtitle: "누적 지원금 약 1억 8,680만 원 확보",
+    amount: "1억 8,680만원",
+    description: "교육 기획 단계부터 지원 가능 여부를 사전 검토하고, 요건이 각기 다른 4개 지원제도(산업·일자리전환, 인재키움, 사업주훈련 등)를 병행 운영하여 교육예산 투입을 최소화하고 높은 교육 성과를 창출했습니다.",
+    tags: ['#정부지원금', '#교육비절감', '#훈련행정', '#사업주훈련'],
     imageUrl: "https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=800&auto=format&fit=crop",
     category: 'trending',
     rank: 1,
-    matchScore: 98,
-    year: '2025'
-  },
-  {
-    id: 't-2',
-    title: "사업주 훈련비 관리",
-    subtitle: "연 1,500만원 국비 지원 운영",
-    description: "복잡한 행정 절차를 시스템화하여 연간 1,500만원 규모의 사업주 훈련비 환급 과정을 100% 달성하고 누락 없는 비용 관리를 실현했습니다.",
-    tags: ['#운영', '#CostSaving', '#Admin'],
-    imageUrl: "https://images.unsplash.com/photo-1454165833767-151671e55831?q=80&w=800&auto=format&fit=crop",
-    category: 'trending',
-    rank: 2,
-    matchScore: 97,
-    year: '2024'
+    matchScore: 99,
+    year: '2023.04 ~ 현재',
+    subItems: [
+      {
+        id: 't-sub-gov-1',
+        title: '산업·일자리전환 지원사업 (9,560만 원 확보)',
+        description: '산업전환 공동훈련센터 연계를 통해 연간 9,560만 원의 지원금을 확보하고 AI 리터러시, DT Change Agent 등 전사 첨단 기술 과정을 운영했습니다.'
+      },
+      {
+        id: 't-sub-gov-2',
+        title: '인재키움 프리미엄 훈련 (6,000만 원 확보)',
+        description: '핵심 직무 능력 향상을 위한 고급 훈련 과정을 연계하여 사내 인재들의 전문 역량을 끌어올렸습니다.'
+      },
+      {
+        id: 't-sub-gov-3',
+        title: '사업주훈련 환급 관리 (3,120만 원 확보)',
+        description: '훈련과정 신고, 출결·수료 관리, 결과 보고 및 정산 서류 관리를 절차화하여 연평균 환급금을 안전하게 수령했습니다.'
+      }
+    ]
   },
   {
     id: 't-3',
-    title: "공통 직무 교육 오픈클래스 운영",
-    subtitle: "ISO/GMP 심사 대응 준비 및 직무 역량 강화",
-    description: "품질 경영을 위한 ISO 및 GMP 심사 대응 체계를 구축하고, 이를 기반으로 사내 공통 직무 교육인 '오픈클래스'를 기획·운영하여 조직 전체의 전문성을 상향 평준화했습니다.",
-    tags: ['#Audit_Ready', '#OpenClass', '#JobSkill'],
+    title: "전사 공통직무 교육 '오픈클래스'",
+    subtitle: "매월 정례 상시 학습 채널 기획·운영",
+    description: "부서·직급과 무관하게 실무에 필요한 핵심 공통 역량을 매월 채우는 오픈형 정례 학습 시스템입니다. 매월 1회, 회차당 3시간 규모로 정례 운영하며 수요조사를 통해 주제와 강사를 차별화하여 배치합니다.",
+    tags: ['#오픈클래스', '#공통직무', '#상시학습', '#스피치_AI_엑셀'],
     imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
     category: 'trending',
-    rank: 3,
-    matchScore: 95,
-    year: '2024'
+    rank: 2,
+    matchScore: 97,
+    year: '2025 ~ 현재',
+    subItems: [
+      {
+        id: 't-sub-open-1',
+        title: '상시 학습 채널 정착 및 주제 편성',
+        description: '스피치, AI 활용, PPT, 엑셀, 태블로 등 직무 공통 역량 중심 주제 편성으로 연 단위 대형 과정 중심에서 매월 열리는 개방형 학습 채널로 전환했습니다.'
+      },
+      {
+        id: 't-sub-open-2',
+        title: '교육 참여 범위 확대 및 기획 표준화',
+        description: '부서/직급 제한 없는 자유로운 신청 구조로 교육 소외 직군까지 참여 범위를 확대하고 운영 절차를 표준화하여 상시 운영 효율을 극대화했습니다.'
+      }
+    ]
   },
   {
     id: 't-4',
-    title: "신규 입사자 온보딩",
-    subtitle: "정착률 20% 상승 견인",
-    description: "게이미피케이션 요소를 도입한 신규 입사자 온보딩 프로그램을 기획하여, 수습 기간 내 조기 퇴사율을 전년 대비 20% 감소시켰습니다.",
-    tags: ['#Onboarding', '#Retention'],
+    title: "기타 교육 운영 지원 및 온보딩",
+    subtitle: "체계적인 교육 프로그램 기획 및 연수 운영",
+    description: "신규 입사자 온보딩 프로그램 기획을 포함하여 사내 다양한 직무 연수 및 특화 프로그램을 세심하게 기획·운영 지원하고 있습니다.",
+    tags: ['#Onboarding', '#Operations', '#EducationSupport'],
     imageUrl: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop",
     category: 'trending',
-    rank: 4,
-    matchScore: 92,
-    year: '2023'
+    rank: 3,
+    matchScore: 94,
+    year: '2023 ~ 현재',
+    subItems: [
+      {
+        id: 't-sub-onboarding',
+        title: '신규 입사자 온보딩 프로그램',
+        description: '게이미피케이션 요소를 도입한 온보딩 과정을 설계하여 수습 기간 내 조기 퇴사율을 전년 대비 20% 감소시키는 성과를 도출했습니다.'
+      }
+    ]
   }
 ];
 
 export const ORIGINALS_DATA: Content[] = [
   {
     id: 'o-1',
-    title: "영상콘텐츠",
-    subtitle: "Motion, Variety, Product Video",
-    description: "모션그래픽부터 사내 예능, 고퀄리티 제품 영상까지 다양한 포맷의 영상 콘텐츠를 제작합니다.",
-    tags: ['#Video', '#Production', '#Editing'],
+    title: "영상 콘텐츠 시리즈",
+    subtitle: "Motion, Variety, Product Video & LMS Content",
+    description: "사내 LMS '세라원아카데미' 운영 및 AI 제작 공정 도입을 통해 외주 구매 없이 모션그래픽, 예능형 사내 콘텐츠, 시네마틱 제품 영상 등 총 103편의 교육·홍보 영상을 기획·촬영·편집했습니다.",
+    tags: ['#Video', '#Production', '#Editing', '#MotionGraphics', '#LMS', '#AI_공정'],
     imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%98%81%EC%83%81%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=a7c29274-cdab-445d-8b3f-7643ec08de81",
     category: 'originals',
     matchScore: 99,
@@ -103,10 +128,10 @@ export const ORIGINALS_DATA: Content[] = [
   },
   {
     id: 'o-2',
-    title: "카드뉴스 콘텐츠",
+    title: "카드뉴스 콘텐츠 시리즈",
     subtitle: "Micro Learning & Branding",
-    description: "바쁜 업무 중에도 핵심 내용을 놓치지 않도록 직관적인 디자인의 카드뉴스를 제작합니다.",
-    tags: ['#Design', '#CardNews', '#Marketing'],
+    description: "핵심 직무 정보 및 건강 팁을 모바일 친화적으로 전달하는 카드뉴스 82편을 직접 디자인·제작했습니다.",
+    tags: ['#CardNews', '#Design', '#MicroLearning'],
     imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=6f1719aa-c439-49b7-8e73-e421740b83ea",
     category: 'originals',
     matchScore: 96,
@@ -119,13 +144,13 @@ export const ORIGINALS_DATA: Content[] = [
   },
   {
     id: 'o-3',
-    title: "웹툰 콘텐츠",
+    title: "웹툰 콘텐츠 시리즈",
     subtitle: "Story-telling Education",
-    description: "어려운 정보도 만화 형식을 통해 친근하고 재미있게 전달하는 교육 웹툰 시리즈입니다.",
-    tags: ['#Webtoon', '#Illustration', '#Story'],
+    description: "친근한 만화 기법을 적용해 몰입도를 증대시킨 에듀테인먼트 사내 웹툰 56편을 연재·제작했습니다.",
+    tags: ['#Webtoon', '#Illustration', '#Edutainment'],
     imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%9B%B9%ED%88%B0%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=a82e9ce7-133a-4926-ae49-4c8307c871ee",
     category: 'originals',
-    matchScore: 98,
+    matchScore: 97,
     contentType: 'webtoon',
     subItems: [
       { id: 'w-1', title: '전지적 척추시점', description: '척추의 입장에서 바라본 일상 건강 관리 웹툰입니다.', images: ['https://picsum.photos/seed/w1-1/600/1200', 'https://picsum.photos/seed/w1-2/600/1200', 'https://picsum.photos/seed/w1-3/600/1200'] },
@@ -138,71 +163,139 @@ export const ORIGINALS_DATA: Content[] = [
 export const TECH_DATA: Content[] = [
   {
     id: 'tech-3',
-    title: "AI 활용 웹페이지 제작",
-    subtitle: "Gemini API 기반 지능형 포트폴리오 구축",
-    description: "LLM(Gemini)과 최신 웹 기술을 결합하여 동적인 사용자 경험을 선사하는 웹 애플리케이션을 제작합니다. AI를 활용한 자동 콘텐츠 생성 및 인터랙티브 UI 설계를 통해 효율적인 개발 프로세스를 구축했습니다.",
-    tags: ['#Gemini_API', '#Web_Dev', '#React', '#AI_Automation'],
-    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+    title: "바이브 코딩 (Vibe Coding)",
+    subtitle: "Google AI Studio, Claude, GPT 활용 사내 웹 서비스 직접 개발",
+    description: "Google AI Studio, Claude, ChatGPT 등 생성형 AI 모델과 웹 기술을 활용하여, 외주 용역 없이 제도를 기획한 작성자가 직접 사내 웹 플랫폼을 구축하고 배포·운영합니다.",
+    tags: ['#바이브코딩', '#ThankYou_CERAGEM', '#AI_Studio', '#Claude', '#GPT', '#React', '#Firebase'],
+    imageUrl: "/vibe_coding.svg",
     category: 'tech',
     matchScore: 100,
-    year: '2026'
+    year: '2026.05 ~ 현재',
+    subItems: [
+      {
+        id: 'tech-vibe-ceragem',
+        title: "사내 칭찬문화 플랫폼 'Thank you CERAGEM' 기획·개발·운영 (2026.05 ~ 현재)",
+        description: "• [제도 기획 & 바이브코딩 개발]: 외부 개발 용역 없이, 제도를 기획한 담당자가 바이브코딩(AI 활용 개발)으로 React·TypeScript / Firebase·Cloud Run 기반 사내 웹 플랫폼 단독 구축.\n• [SAML SSO 및 인증 연동]: 네이버웍스 SAML SSO 연동 구현. Firebase 기본 SAML의 한계를 극복하기 위해 Node.js 기반 커스텀 인증 서버를 별도 구축해 사내 계정 연동 완료.\n• [시스템 통합 & 보안]: 칭찬 메시지 작성 → 포인트 지급 → 기프티콘 교환 → 분기별 시상으로 연결되는 개별 운영 프로세스를 단일 시스템으로 통합. 포인트 로직 서버사이드 이관 및 보안 규칙 적용 완료."
+      }
+    ]
   },
   {
     id: 'tech-1',
-    title: "AI 리터러시 교육",
-    subtitle: "리더/매니저 대상 프롬프트 엔지니어링",
-    description: "ChatGPT, Claude 등을 활용한 업무 효율화 워크샵 진행. 리더급 대상 의사결정 지원 AI 활용법 전파.",
-    tags: ['#AI', '#Lecture', '#Prompt'],
-    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
+    title: "AI 교육 기획 및 운영",
+    subtitle: "전사 AI 리터러시 및 사내 AI 에이전트 활용 과정 기획·운영",
+    description: "직급별·직군별로 요구되는 AI 활용 레벨을 다각도로 분석하여, 리더/매니저 대상 맞춤형 AI 리터러시 교육과 사내 AI 에이전트 'CERA Agent'의 현장 적용 교육을 기획 및 총괄 운영했습니다.",
+    tags: ['#AI교육', '#AI리터러시', '#CERA_Agent', '#생성형AI', '#업무자동화', '#정부지원금4800만'],
+    imageUrl: "/ai_education.svg",
     category: 'tech',
-    matchScore: 98,
-    year: '2025'
-  },
-  {
-    id: 'tech-2',
-    title: "Tableau 심화 교육운영",
-    subtitle: "데이터 시각화 역량 강화 과정",
-    description: "데이터 시각화 도구 Tableau의 고급 기능을 활용한 데이터 분석 및 인사이트 도출 역량 강화 과정을 기획·운영했습니다.",
-    tags: ['#Data', '#Tableau', '#Expert'],
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bbbda50a5f4a?q=80&w=800&auto=format&fit=crop",
-    category: 'tech',
-    matchScore: 95,
-    year: '2024'
+    matchScore: 99,
+    year: '2025.09 ~ 2026.07',
+    subItems: [
+      {
+        id: 'tech-sub-literacy',
+        title: '전사 AI 리터러시 교육 기획·운영 (2025.09 ~ 2025.12)',
+        description: '• [과정 설계 & 예산 절감]: 팀장/매니저급 20시간 과정(38명 2개반) 설계. 산업·일자리전환 지원사업 연계로 정부지원금 4,800만 원 확보하여 예산 투입 최소화.\n• [성과]: 20시간 장기 과정임에도 만족도 4.7/5.0 달성. 단순 툴 학습을 넘어 실제 업무 결과물을 도출하는 커리큘럼 정착.'
+      },
+      {
+        id: 'tech-sub-agent',
+        title: "사내 AI 에이전트 'CERA Agent' 활용 교육 (2026.06 ~ 2026.07)",
+        description: '• [권역별·직군별 설계]: 서울·과천·천안 3개 권역별 총 4회 운영. 연구소, 디자인, 구매, 물류 등 직군별 특성 반영 사전 수요조사 실시.\n• [성과]: 팀별 최소 1명 이상 참여 구조로 전사 확산 유도. 범용 사례가 아닌 자사 실제 업무 사례를 직접 활용한 실습 과정 구축.'
+      }
+    ]
   }
 ];
 
 export const CULTURE_DATA: Content[] = [
   {
     id: 'cul-1',
-    title: "사내 웹드라마 제작기",
-    subtitle: "조직문화 활성화 프로젝트",
-    description: "직원들이 직접 배우로 참여한 사내 웹드라마. 조직 내 소통 부재와 세대 갈등을 유쾌하게 풀어낸 수작.",
-    tags: ['#Director', '#Culture', '#Drama'],
-    imageUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
+    title: "사내라이브방송 운영",
+    subtitle: "소통플러스 — 사내 라이브 방송 & 실시간 커뮤니케이션",
+    description: "일방향 공지 형태에서 벗어나 경영진과 구성원이 직접 대화하고 소통하는 사내 라이브 방송 '소통플러스'를 기획·운영했습니다. 주제 선정, 큐시트·대본 작성, 출연자 섭외, 송출, 실시간 Q&A까지 전 과정을 내부에서 직접 전담하여 사내 소통과 유대감을 강화했습니다.",
+    tags: ['#사내라이브방송', '#소통플러스', '#실시간소통', '#사내커뮤니케이션', '#내재화'],
+    imageUrl: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
     category: 'culture',
     matchScore: 99,
-    year: '2024'
+    year: '2025.04 ~ 현재',
+    subItems: [
+      {
+        id: 'cul-live-1',
+        title: '사내 소통 라이브 채널 "소통플러스" 신설 및 정례화',
+        description: '게시판 공지 일변도였던 사내 소통에 경영진과 구성원이 실시간으로 소통하는 양방향 라이브 채널 신설.'
+      },
+      {
+        id: 'cul-live-2',
+        title: '기획·대본·촬영·송출 전 과정 내재화',
+        description: '주제 선정, 큐시트 작성, 출연자 섭외, 기술 송출 및 실시간 질의응답을 외주 없이 전담 수행하여 사안 발생 시 즉각 대응.'
+      }
+    ]
   },
   {
     id: 'cul-2',
-    title: "조직문화 포스터",
-    subtitle: "비주얼 커뮤니케이션 가치 전파",
-    description: "핵심 가치를 시각적으로 형상화하여 사무 공간에 배치함으로써 임직원들이 기업 문화를 자연스럽게 내재화하도록 돕는 포스터 시리즈입니다.",
-    tags: ['#Visual', '#Design', '#Values'],
-    imageUrl: "https://images.unsplash.com/photo-1572044162444-ad60f128bde2?q=80&w=800&auto=format&fit=crop",
+    title: "조직문화포스터 제작",
+    subtitle: "기업 핵심 가치 및 조직문화 캠페인 비주얼 브랜딩",
+    description: "기업의 핵심 가치와 일하는 방식을 시각적으로 형상화하여 사무 공간 및 사내 채널에 배포하는 조직문화 캠페인 포스터, 배너, 카드뉴스를 직접 기획하고 디자인하여 임직원들이 기업 문화를 자연스럽게 내재화하도록 지원했습니다.",
+    tags: ['#조직문화포스터', '#비주얼브랜딩', '#캠페인디자인', '#핵심가치내재화'],
+    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
     category: 'culture',
-    matchScore: 95,
-    year: '2024'
+    matchScore: 97,
+    year: '2025 ~ 현재',
+    subItems: [
+      {
+        id: 'cul-poster-1',
+        title: '핵심 가치 내재화 포스터 및 배너 직접 기획·디자인',
+        description: '사무 공간 인테리어와 사내 인트라넷 환경에 최적화된 비주얼 그래픽으로 핵심 가치와 행동 원칙을 직관적으로 전달.'
+      },
+      {
+        id: 'cul-poster-2',
+        title: '사내 캠페인 및 제도 안내 비주얼라이징',
+        description: '텍스트 중심의 복잡한 사내 정책과 제도를 카드뉴스와 포스터로 시각화하여 구성원의 이해도와 공감대 형성.'
+      }
+    ]
   },
   {
     id: 'cul-3',
-    title: "조직문화 활동",
-    subtitle: "함께 즐기고 소통하는 건강한 문화",
-    description: "타운홀 미팅, 팀 빌딩 이벤트 등 구성원 간의 유대감을 강화하고 소속감을 고취하는 다채로운 조직 활성화 프로그램을 기획하고 운영합니다.",
-    tags: ['#Activity', '#Networking', '#Teamwork'],
-    imageUrl: "https://images.unsplash.com/photo-1528605248644-14dd0432211e?q=80&w=800&auto=format&fit=crop",
+    title: "사내 웹드라마 제작",
+    subtitle: "임직원 직접 참여형 공감 웹드라마 프로젝트",
+    description: "직원들이 직접 기획, 연출, 배우로 참여한 사내 웹드라마 프로젝트입니다. 조직 내 소통 부재와 세대 갈등, 업무 현장의 생생한 에피소드를 유쾌하고 진솔하게 풀어내어 전사적 공감대와 유대감을 이끌어냈습니다.",
+    tags: ['#사내웹드라마', '#임직원참여', '#조직문화활성화', '#공감스토리'],
+    imageUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
     category: 'culture',
-    matchScore: 97,
-    year: '2025'
+    matchScore: 98,
+    year: '2024',
+    subItems: [
+      {
+        id: 'cul-drama-1',
+        title: '임직원 참여형 시나리오 & 연출',
+        description: '사내 실제 에피소드를 바탕으로 공감형 스토리를 구성하고 직원들이 배우로 참여해 높은 몰입과 화제성 형성.'
+      },
+      {
+        id: 'cul-drama-2',
+        title: '세대 간 소통 및 문화 활성화 기여',
+        description: '일방적 교육 대신 드라마라는 친근한 미디어를 통해 세대 간 공감대를 형성하고 유쾌한 기업 문화 조성.'
+      }
+    ]
+  },
+  {
+    id: 'cul-4',
+    title: "기타 조직문화 활동",
+    subtitle: "참여형 퀴즈 이벤트, 타운홀 미팅 & 팀 빌딩",
+    description: "정보보안·건강 등 필수 전달사항을 퀴즈 이벤트로 재구성하여 자발적 열람을 유도하고, 타운홀 미팅 및 팀 빌딩 이벤트를 기획·운영하여 구성원 간의 친목 도모와 건강한 소통 문화를 정착시켰습니다.",
+    tags: ['#기타조직문화', '#참여형이벤트', '#퀴즈이벤트', '#타운홀미팅', '#팀빌딩'],
+    imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
+    category: 'culture',
+    matchScore: 96,
+    year: '2023 ~ 현재',
+    subItems: [
+      {
+        id: 'cul-etc-1',
+        title: '참여형 퀴즈 이벤트 기획·운영',
+        description: '읽히지 않던 필수 정보(보안, 건강 등)를 재미있는 퀴즈로 재구성하고 경품 지급 프로세스를 운영해 임직원의 자발적 참여 유도.'
+      },
+      {
+        id: 'cul-etc-2',
+        title: '타운홀 미팅 & 팀 빌딩 프로그램',
+        description: '경영진과 임직원 간 자유로운 소통의 장을 마련하고 부서 간 교류와 결속력을 강화하는 다채로운 조직 활성화 행사 운영.'
+      }
+    ]
   }
 ];
+

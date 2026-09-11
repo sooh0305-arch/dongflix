@@ -1,6 +1,7 @@
 import React from 'react';
 import { Content } from '../types';
 import { TRENDING_DATA, ORIGINALS_DATA, TECH_DATA, CULTURE_DATA } from '../constants';
+import AIGeneratedImage from './AIGeneratedImage';
 
 interface SearchResultsProps {
   query: string;
@@ -37,11 +38,20 @@ const SearchResults: React.FC<SearchResultsProps> = ({ query, onContentClick }) 
               onClick={() => onContentClick(item)}
             >
               <div className="aspect-video rounded overflow-hidden mb-2 bg-[#2a2a2a]">
-                <img 
-                  src={item.imageUrl} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover brightness-[0.8] group-hover:brightness-100 transition"
-                />
+                {item.imagePrompt ? (
+                  <AIGeneratedImage 
+                    prompt={item.imagePrompt} 
+                    alt={item.title}
+                    className="w-full h-full object-cover brightness-[0.8] group-hover:brightness-100 transition"
+                    fallbackUrl={item.imageUrl}
+                  />
+                ) : (
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover brightness-[0.8] group-hover:brightness-100 transition"
+                  />
+                )}
               </div>
               <div className="space-y-1">
                 <p className="text-[#46d369] text-[10px] md:text-xs font-bold">기여도 {item.matchScore}%</p>

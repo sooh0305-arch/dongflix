@@ -30,6 +30,7 @@ export interface Content {
   matchScore?: number; 
   year?: string;
   duration?: string;
+  amount?: string; // 성과 금액 (예: 9,560만원)
   contentType?: 'video' | 'card' | 'webtoon'; // Display mode
   subItems?: SubItem[]; // Episodes or sub-categories
   careerHistory?: CareerItem[];

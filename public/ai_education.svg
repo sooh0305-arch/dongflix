@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad2" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#181215" />
+      <stop offset="100%" stop-color="#09090b" />
+    </radialGradient>
+
+    <!-- Neon Red Glow Filters -->
+    <filter id="neonGlow2" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur1" />
+      <feGaussianBlur stdDeviation="15" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="intenseGlow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur1" />
+      <feGaussianBlur stdDeviation="12" result="blur2" />
+      <feGaussianBlur stdDeviation="28" result="blur3" />
+      <feMerge>
+        <feMergeNode in="blur3" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bgGrad2)" />
+
+  <!-- Side Neon Border Vertical Lines (Left & Right Edges) -->
+  <line x1="24" y1="20" x2="24" y2="700" stroke="#ff2a40" stroke-width="8" stroke-linecap="round" filter="url(#intenseGlow2)" />
+  <line x1="1256" y1="20" x2="1256" y2="700" stroke="#ff2a40" stroke-width="8" stroke-linecap="round" filter="url(#intenseGlow2)" />
+
+  <!-- Sparkle Accent at Bottom Right -->
+  <g transform="translate(1230, 670)" filter="url(#intenseGlow2)">
+    <path d="M 0 -15 Q 0 0 15 0 Q 0 0 0 15 Q 0 0 -15 0 Q 0 0 0 -15 Z" fill="#ffffff" />
+  </g>
+
+  <!-- Ground / Table Surface Shadow -->
+  <ellipse cx="640" cy="620" rx="550" ry="80" fill="#000000" opacity="0.6" />
+  <line x1="180" y1="620" x2="1100" y2="620" stroke="#ff2a40" stroke-width="2" opacity="0.4" filter="url(#softGlow2)" />
+
+  <!-- 1. PRESENTATION WHITEBOARD SCREEN (Right Side) -->
+  <g id="presentation-board" filter="url(#intenseGlow2)">
+    <!-- Screen Board Frame Outer Glow -->
+    <rect x="620" y="160" width="450" height="320" rx="28" fill="#151720" stroke="#ff2a40" stroke-width="8" />
+    <rect x="628" y="168" width="434" height="304" rx="22" fill="#ffffff" opacity="0.95" />
+
+    <!-- Inside Screen Content (Dark Red & Grey Graphics on White) -->
+    <!-- Human Head Silhouette with AI Brain -->
+    <g transform="translate(710, 260)">
+      <!-- Head Profile -->
+      <path d="M -20 70 C -35 70 -50 55 -50 30 C -50 0 -35 -20 -10 -20 C 15 -20 25 -5 25 15 C 35 15 45 25 45 35 C 45 42 40 48 35 50 C 35 60 25 70 -5 70 Z" fill="#2d1d24" />
+      <path d="M -15 65 C -28 65 -42 52 -42 28 C -42 2 -28 -15 -5 -15 C 18 -15 28 -2 28 18 C 32 18 38 23 38 32 C 38 38 34 44 30 46 C 30 55 20 65 -5 65 Z" fill="#ff2a40" />
+      
+      <!-- AI Brain Circle inside Head -->
+      <circle cx="-10" cy="15" r="22" fill="#ffffff" />
+      <text x="-10" y="22" font-family="Arial, sans-serif" font-weight="900" font-size="20" fill="#ff2a40" text-anchor="middle">AI</text>
+    </g>
+
+    <!-- Presentation Bullet Lines -->
+    <line x1="790" y1="210" x2="980" y2="210" stroke="#2d1d24" stroke-width="6" stroke-linecap="round" />
+    <line x1="790" y1="235" x2="940" y2="235" stroke="#2d1d24" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Bar Chart Graphic -->
+    <g transform="translate(860, 370)">
+      <rect x="0" y="-35" width="22" height="35" rx="4" fill="#ff2a40" />
+      <rect x="30" y="-60" width="22" height="60" rx="4" fill="#ff2a40" />
+      <rect x="60" y="-90" width="22" height="90" rx="4" fill="#ff2a40" />
+    </g>
+
+    <!-- Bottom 3 Dots on Board -->
+    <circle cx="880" cy="425" r="8" fill="#2d1d24" />
+    <circle cx="910" cy="425" r="8" fill="#2d1d24" />
+    <circle cx="940" cy="425" r="8" fill="#2d1d24" />
+  </g>
+
+
+  <!-- 2. AI ROBOT INSTRUCTOR (Center Character) -->
+  <g id="ai-robot" filter="url(#intenseGlow2)">
+
+    <!-- Pointer Stick extending from Robot to Board -->
+    <line x1="530" y1="410" x2="710" y2="340" stroke="#ff2a40" stroke-width="7" stroke-linecap="round" />
+    <circle cx="710" cy="340" r="6" fill="#ffffff" />
+
+    <!-- Robot Body / Torso -->
+    <path d="M 410 490 C 400 440 450 420 500 420 C 550 420 600 440 590 490 C 580 540 420 540 410 490 Z" fill="#ffffff" stroke="#ff2a40" stroke-width="6" />
+    <!-- Chest Screen Badge -->
+    <rect x="460" y="445" width="80" height="40" rx="12" fill="#2d1d24" stroke="#ff2a40" stroke-width="3" />
+    <circle cx="500" cy="465" r="10" fill="#ff2a40" />
+
+    <!-- Robot Arms -->
+    <!-- Left Arm resting on Laptop -->
+    <path d="M 420 450 C 370 460 340 500 320 540" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" />
+    <path d="M 420 450 C 370 460 340 500 320 540" fill="none" stroke="#ff2a40" stroke-width="8" stroke-linecap="round" />
+    
+    <!-- Right Arm holding Pointer -->
+    <path d="M 580 450 C 610 440 620 420 640 410" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" />
+    <path d="M 580 450 C 610 440 620 420 640 410" fill="none" stroke="#ff2a40" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Robot Head Assembly -->
+    <g transform="translate(500, 310)">
+      <!-- Head Base Outline -->
+      <rect x="-95" y="-70" width="190" height="140" rx="65" fill="#ffffff" stroke="#ff2a40" stroke-width="8" />
+      
+      <!-- Ears / Headphones (Left & Right) -->
+      <rect x="-118" y="-35" width="25" height="70" rx="10" fill="#ff2a40" />
+      <rect x="93" y="-35" width="25" height="70" rx="10" fill="#ff2a40" />
+      <rect x="-110" y="-20" width="12" height="40" rx="6" fill="#ffffff" />
+      <rect x="98" y="-20" width="12" height="40" rx="6" fill="#ffffff" />
+
+      <!-- Screen Face Viewport -->
+      <rect x="-68" y="-45" width="136" height="90" rx="38" fill="#151720" stroke="#2d1d24" stroke-width="4" />
+
+      <!-- Glowing Oval Eyes -->
+      <ellipse cx="-32" cy="-2" rx="16" ry="22" fill="#ffffff" />
+      <ellipse cx="32" cy="-2" rx="16" ry="22" fill="#ffffff" />
+      <!-- Pupil / Inner Glow -->
+      <circle cx="-32" cy="-2" r="8" fill="#ff2a40" />
+      <circle cx="32" cy="-2" r="8" fill="#ff2a40" />
+      <circle cx="-35" cy="-6" r="4" fill="#ffffff" />
+      <circle cx="29" cy="-6" r="4" fill="#ffffff" />
+    </g>
+  </g>
+
+
+  <!-- 3. FLOATING USER PROFILE CARD (Above Robot, Left Side) -->
+  <g id="speech-card" transform="translate(280, 220)" filter="url(#intenseGlow2)">
+    <!-- Card Frame -->
+    <rect x="0" y="0" width="130" height="110" rx="22" fill="#ff2a40" />
+    <rect x="6" y="6" width="118" height="98" rx="18" fill="#1e181c" />
+
+    <!-- Tail Bubble Triangle -->
+    <polygon points="40,110 60,110 30,135" fill="#ff2a40" />
+
+    <!-- Person Icon inside Card -->
+    <!-- Head -->
+    <circle cx="65" cy="42" r="18" fill="#ffffff" />
+    <!-- Shoulders -->
+    <path d="M 35 85 C 35 62 50 58 65 58 C 80 58 95 62 95 85 Z" fill="#ffffff" />
+  </g>
+
+
+  <!-- 4. OPEN LAPTOP ON DESK (Foreground Left) -->
+  <g id="desk-laptop" transform="translate(180, 480)" filter="url(#intenseGlow2)">
+    <!-- Laptop Screen angled back -->
+    <polygon points="60,0 200,0 220,100 40,100" fill="#151720" stroke="#ff2a40" stroke-width="5" />
+    <polygon points="70,10 190,10 208,90 52,90" fill="#ffffff" opacity="0.9" />
+    <!-- Red Logo on Screen -->
+    <circle cx="130" cy="50" r="14" fill="#ff2a40" />
+
+    <!-- Laptop Base Keyboard Unit -->
+    <polygon points="30,100 230,100 270,140 -10,140" fill="#1e181c" stroke="#ff2a40" stroke-width="5" />
+    <polygon points="45,108 215,108 245,132 15,132" fill="#ff2a40" opacity="0.6" />
+  </g>
+
+
+  <!-- 5. STACKED BOOKS ON DESK (Foreground Right of Robot) -->
+  <g id="desk-books" transform="translate(750, 560)" filter="url(#intenseGlow2)">
+    <!-- Bottom Book -->
+    <rect x="0" y="40" width="260" height="40" rx="8" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+    <rect x="15" y="48" width="235" height="24" fill="#ffffff" />
+    <!-- Top Book -->
+    <rect x="15" y="0" width="220" height="38" rx="8" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+    <rect x="30" y="8" width="195" height="22" fill="#ffffff" />
+  </g>
+
+</svg>

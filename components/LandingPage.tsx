@@ -14,6 +14,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
            src="https://assets.nflxext.com/ffe/siteui/vlv3/93da5c27-be66-427c-8b72-5cb39d275279/94eb5ad7-10d8-4cca-bf45-52043743669c/KR-ko-20240226-popsignuptwoweeks-perspective_alpha_website_large.jpg" 
            alt="Background" 
            className="w-full h-full object-cover opacity-60 scale-105"
+           referrerPolicy="no-referrer"
          />
          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40"></div>
          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>

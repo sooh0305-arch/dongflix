@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onProfileClick }) => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-[60] transition-colors duration-500 ${isScrolled || isSearchOpen ? 'bg-[#141414]' : 'bg-gradient-to-b from-black/70 to-transparent'}`}>
+    <nav className={`fixed top-0 w-full z-[60] transition-colors duration-500 ${isScrolled || isSearchOpen ? 'bg-[#141414]' : 'bg-gradient-to-b from-black/90 to-transparent'}`}>
       <div className="flex items-center justify-between px-4 md:px-12 py-3 md:py-4">
         <div className="flex items-center space-x-4 md:space-x-8">
           {/* Logo */}
@@ -152,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onProfileClick }) => {
             onClick={onProfileClick}
           >
             <div className="w-7 h-7 md:w-8 md:h-8 rounded bg-red-600 overflow-hidden">
-               <img src="https://picsum.photos/seed/avatar/200/200" alt="Profile" />
+               <img src="https://picsum.photos/seed/avatar/200/200" alt="Profile" referrerPolicy="no-referrer" />
             </div>
             <Menu className="w-5 h-5 ml-2 md:hidden" />
           </div>

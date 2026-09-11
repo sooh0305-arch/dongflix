@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#181214" />
+      <stop offset="100%" stop-color="#09090b" />
+    </radialGradient>
+
+    <!-- Neon Red Glow Filters -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur1" />
+      <feGaussianBlur stdDeviation="18" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softRedGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur1" />
+      <feGaussianBlur stdDeviation="12" result="blur2" />
+      <feGaussianBlur stdDeviation="30" result="blur3" />
+      <feMerge>
+        <feMergeNode in="blur3" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bgGrad)" />
+
+  <!-- Ambient Light Reflection on Surface -->
+  <ellipse cx="640" cy="520" rx="480" ry="160" fill="#ff1e38" opacity="0.12" filter="url(#softRedGlow)" />
+
+  <!-- Network Nodes - Left Side -->
+  <g stroke="#ff2a40" stroke-width="2" opacity="0.8" filter="url(#neonGlow)">
+    <line x1="140" y1="280" x2="220" y2="210" />
+    <line x1="220" y1="210" x2="280" y2="280" />
+    <line x1="140" y1="280" x2="180" y2="380" />
+    <line x1="180" y1="380" x2="280" y2="280" />
+    
+    <!-- Diamonds -->
+    <rect x="132" y="272" width="16" height="16" transform="rotate(45 140 280)" fill="#ff2a40" />
+    <rect x="212" y="202" width="16" height="16" transform="rotate(45 220 210)" fill="#ff2a40" />
+    <rect x="272" y="272" width="16" height="16" transform="rotate(45 280 280)" fill="#ff2a40" />
+    <circle cx="180" cy="380" r="5" fill="#ff2a40" />
+    <circle cx="200" cy="270" r="4" fill="#ff2a40" />
+  </g>
+
+  <!-- Network Nodes - Right Side -->
+  <g stroke="#ff2a40" stroke-width="2" opacity="0.8" filter="url(#neonGlow)">
+    <line x1="1020" y1="480" x2="1100" y2="420" />
+    <line x1="1100" y1="420" x2="1150" y2="520" />
+    
+    <rect x="1012" y="472" width="16" height="16" transform="rotate(45 1020 480)" fill="#ff2a40" />
+    <rect x="1092" y="412" width="16" height="16" transform="rotate(45 1100 420)" fill="#ff2a40" />
+    <circle cx="1150" cy="520" r="5" fill="#ff2a40" />
+  </g>
+
+  <!-- LAPTOP MAIN ASSEMBLY -->
+  <g id="laptop">
+    <!-- Laptop Screen Outer Outline with Neon Red -->
+    <polygon points="380,80 1020,130 960,520 280,450" fill="#121318" stroke="#ff2a40" stroke-width="8" filter="url(#intenseGlow)" rx="12" />
+    <polygon points="380,80 1020,130 960,520 280,450" fill="#0d0e12" />
+
+    <!-- Screen Bezel Interior -->
+    <polygon points="395,95 1005,142 948,505 295,440" fill="#14151b" stroke="#ff2a40" stroke-width="2" />
+    <polygon points="402,102 998,148 942,498 302,433" fill="#181920" />
+
+    <!-- SCREEN CONTENT -->
+    <!-- Screen Header Bar -->
+    <polygon points="402,102 998,148 991,180 407,135" fill="#222430" />
+    <!-- Header Window Dots -->
+    <circle cx="420" cy="122" r="5" fill="#ff4d5e" />
+    <circle cx="435" cy="123" r="5" fill="#ff2a40" />
+    <circle cx="450" cy="124" r="5" fill="#ff2a40" />
+
+    <!-- Left UI Panel (Media Cards) -->
+    <polygon points="410,145 570,157 558,485 404,425" fill="#1c1e27" stroke="#ff2a40" stroke-width="1.5" opacity="0.9" />
+    
+    <!-- Media Card 1 (Image Thumbnail with Sun) -->
+    <polygon points="420,160 560,170 550,290 415,275" fill="#282a36" stroke="#ff3b4e" stroke-width="2" />
+    <!-- Sun & Mountain in Card -->
+    <circle cx="510" cy="210" r="14" fill="#ffffff" filter="url(#neonGlow)" />
+    <polygon points="425,270 470,220 500,250 545,200 552,278" fill="#ff2a40" opacity="0.8" />
+
+    <!-- Media Card 2 (4 Grid Boxes) -->
+    <polygon points="418,295 548,305 540,415 412,402" fill="#282a36" />
+    <rect x="425" y="310" width="50" height="40" rx="6" fill="#ff2a40" opacity="0.9" filter="url(#neonGlow)" />
+    <rect x="483" y="314" width="50" height="40" rx="6" fill="#ff2a40" opacity="0.9" filter="url(#neonGlow)" />
+    <rect x="422" y="360" width="50" height="40" rx="6" fill="#ff2a40" opacity="0.9" filter="url(#neonGlow)" />
+    <rect x="480" y="364" width="50" height="40" rx="6" fill="#ff2a40" opacity="0.9" filter="url(#neonGlow)" />
+
+    <!-- Center UI Panel (Code Editor) -->
+    <polygon points="580,160 820,178 805,488 568,470" fill="#15161e" stroke="#ff2a40" stroke-width="2" />
+    
+    <!-- Code Lines (Glowing Red & White Syntax) -->
+    <!-- Line 1 -->
+    <line x1="595" y1="185" x2="640" y2="188" stroke="#ff2a40" stroke-width="6" stroke-linecap="round" filter="url(#neonGlow)" />
+    <line x1="650" y1="189" x2="730" y2="195" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+    <!-- Line 2 -->
+    <line x1="610" y1="210" x2="680" y2="215" stroke="#ff5c6c" stroke-width="6" stroke-linecap="round" />
+    <line x1="690" y1="216" x2="760" y2="221" stroke="#ff2a40" stroke-width="6" stroke-linecap="round" filter="url(#neonGlow)" />
+    <!-- Line 3 -->
+    <line x1="610" y1="235" x2="720" y2="243" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+    <!-- Line 4 -->
+    <line x1="625" y1="260" x2="670" y2="263" stroke="#ff2a40" stroke-width="6" stroke-linecap="round" />
+    <line x1="680" y1="264" x2="790" y2="272" stroke="#ff5c6c" stroke-width="6" stroke-linecap="round" />
+    <!-- Line 5 -->
+    <line x1="625" y1="285" x2="740" y2="293" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+    <!-- Line 6 -->
+    <line x1="595" y1="310" x2="650" y2="314" stroke="#ff2a40" stroke-width="6" stroke-linecap="round" filter="url(#neonGlow)" />
+    <!-- Line 7 -->
+    <line x1="610" y1="335" x2="710" y2="342" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+    <!-- Line 8 -->
+    <line x1="610" y1="360" x2="770" y2="371" stroke="#ff2a40" stroke-width="6" stroke-linecap="round" />
+    <!-- Line 9 -->
+    <line x1="625" y1="385" x2="700" y2="390" stroke="#ff5c6c" stroke-width="6" stroke-linecap="round" />
+    <!-- Line 10 -->
+    <line x1="595" y1="410" x2="630" y2="412" stroke="#ff2a40" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Right UI Panel (AI Bot Assistant Panel) -->
+    <polygon points="830,178 985,188 935,492 785,480" fill="#1c1e27" stroke="#ff2a40" stroke-width="1.5" />
+    
+    <!-- AI Robot Chat Bubble Card -->
+    <polygon points="840,200 975,210 955,340 825,328" fill="#252733" stroke="#ff2a40" stroke-width="3" filter="url(#neonGlow)" />
+    
+    <!-- AI Robot Face Graphic in Right Panel -->
+    <g transform="translate(895, 260)">
+      <!-- Robot Head Contour -->
+      <rect x="-35" y="-28" width="70" height="52" rx="22" fill="#ffffff" stroke="#ff2a40" stroke-width="4" filter="url(#intenseGlow)" />
+      <!-- Antenna -->
+      <circle cx="0" cy="-38" r="7" fill="#ff2a40" filter="url(#neonGlow)" />
+      <line x1="0" y1="-38" x2="0" y2="-28" stroke="#ffffff" stroke-width="4" />
+      <!-- Ears / Headphones -->
+      <rect x="-43" y="-15" width="10" height="26" rx="4" fill="#ff2a40" />
+      <rect x="33" y="-15" width="10" height="26" rx="4" fill="#ff2a40" />
+      <!-- Screen Eyes Screen -->
+      <rect x="-24" y="-16" width="48" height="28" rx="10" fill="#121318" />
+      <!-- Glowing Eyes -->
+      <ellipse cx="-10" cy="-2" rx="5" ry="6" fill="#ffffff" filter="url(#neonGlow)" />
+      <ellipse cx="10" cy="-2" rx="5" ry="6" fill="#ffffff" filter="url(#neonGlow)" />
+    </g>
+
+    <!-- AI Panel Chat Input Boxes -->
+    <polygon points="832,360 945,368 940,400 828,392" fill="#ff2a40" filter="url(#neonGlow)" />
+    <line x1="845" y1="380" x2="915" y2="385" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <polygon points="825,415 930,422 922,465 818,458" fill="#282a36" stroke="#ff2a40" stroke-width="1" />
+    
+    <!-- Action Button in AI Panel -->
+    <rect x="830" y="430" width="40" height="20" rx="4" fill="#ffffff" />
+    <rect x="880" y="433" width="35" height="20" rx="4" fill="#ff2a40" filter="url(#neonGlow)" />
+
+
+    <!-- LAPTOP KEYBOARD BASE -->
+    <!-- Base Body Outer Perspective Shell -->
+    <polygon points="80,520 1200,560 900,715 120,685" fill="#1d1e26" stroke="#ff2a40" stroke-width="6" filter="url(#intenseGlow)" />
+    <polygon points="80,520 1200,560 900,715 120,685" fill="#14151b" />
+
+    <!-- Keyboard Well -->
+    <polygon points="220,540 1060,572 850,670 200,645" fill="#0d0e12" stroke="#ff2a40" stroke-width="2" />
+
+    <!-- Key Rows (Glowing Red Grid Lines representing Keyboard Keys) -->
+    <g stroke="#ff2a40" stroke-width="2" opacity="0.85" filter="url(#neonGlow)">
+      <!-- Horizontal Key Grid Lines -->
+      <line x1="225" y1="555" x2="1040" y2="582" />
+      <line x1="220" y1="575" x2="1010" y2="602" />
+      <line x1="215" y1="595" x2="970" y2="622" />
+      <line x1="210" y1="615" x2="930" y2="642" />
+      <line x1="205" y1="635" x2="880" y2="662" />
+
+      <!-- Key Vertical Dividers across Keyboard -->
+      <line x1="300" y1="543" x2="280" y2="648" />
+      <line x1="380" y1="546" x2="360" y2="652" />
+      <line x1="460" y1="549" x2="440" y2="656" />
+      <line x1="540" y1="552" x2="520" y2="660" />
+      <line x1="620" y1="555" x2="600" y2="663" />
+      <line x1="700" y1="558" x2="680" y2="666" />
+      <line x1="780" y1="561" x2="760" y2="668" />
+      <line x1="860" y1="564" x2="840" y2="670" />
+      <line x1="940" y1="567" x2="850" y2="670" />
+
+      <!-- Spacebar highlight -->
+      <polygon points="450,638 670,646 655,662 438,654" fill="#ff2a40" opacity="0.6" />
+    </g>
+  </g>
+
+  <!-- HUMAN HANDS TYPING (Stylized Red & White Art) -->
+  <g id="hands" filter="url(#intenseGlow)">
+    <!-- Left Hand -->
+    <!-- Arm / Sleeve -->
+    <path d="M 0 720 L 180 580 L 260 595 L 140 720 Z" fill="#0d0e12" stroke="#ff2a40" stroke-width="4" />
+    <!-- Palm & Fingers -->
+    <path d="M 180 580 C 210 540 280 520 370 545 C 430 560 470 585 470 610 C 470 635 390 670 260 660 L 180 580 Z" fill="#ff4d5e" opacity="0.85" stroke="#ffffff" stroke-width="4" />
+    
+    <!-- Left Hand Fingers -->
+    <!-- Thumb -->
+    <path d="M 330 550 C 370 540 410 560 415 580 C 415 595 380 600 340 580 Z" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+    <!-- Index Finger -->
+    <path d="M 360 535 C 410 525 465 545 470 565 C 470 580 430 585 375 565 Z" fill="#ff3b4e" stroke="#ffffff" stroke-width="3" />
+    <!-- Middle Finger -->
+    <path d="M 340 525 C 390 515 445 530 450 550 C 450 565 410 570 355 550 Z" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+    <!-- Ring Finger -->
+    <path d="M 315 530 C 360 520 410 535 415 550 C 415 565 375 570 325 555 Z" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+
+    <!-- Right Hand -->
+    <!-- Arm / Sleeve -->
+    <path d="M 1280 720 L 820 620 L 710 660 L 1050 720 Z" fill="#0d0e12" stroke="#ff2a40" stroke-width="4" />
+    <!-- Palm & Fingers -->
+    <path d="M 820 620 C 760 570 680 560 580 580 C 510 600 480 630 510 660 C 540 690 680 700 750 670 L 820 620 Z" fill="#ff4d5e" opacity="0.85" stroke="#ffffff" stroke-width="4" />
+    
+    <!-- Right Hand Fingers -->
+    <!-- Index Finger -->
+    <path d="M 580 580 C 520 560 470 575 465 595 C 465 610 510 620 560 600 Z" fill="#ff3b4e" stroke="#ffffff" stroke-width="3" />
+    <!-- Middle Finger -->
+    <path d="M 610 570 C 540 545 490 560 485 580 C 485 595 530 605 590 585 Z" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+    <!-- Ring Finger -->
+    <path d="M 640 575 C 580 555 530 570 525 588 C 525 600 570 610 620 590 Z" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+    <!-- Pinky Finger -->
+    <path d="M 670 585 C 620 570 580 585 575 600 C 575 612 610 620 650 605 Z" fill="#ff2a40" stroke="#ffffff" stroke-width="3" />
+  </g>
+</svg>

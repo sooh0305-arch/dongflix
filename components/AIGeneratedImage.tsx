@@ -32,28 +32,8 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
       setLoading(true);
       
       try {
-        // 안전한 API KEY 접근 (브라우저 환경 호환)
-        let apiKey = '';
-        
-        // 1. process.env 체크 (Node/Webpack 등)
-        if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
-            apiKey = process.env.API_KEY;
-        } 
-        // 2. import.meta.env 체크 (Vite 등)
-        else {
-            try {
-                // @ts-ignore
-                if (import.meta && import.meta.env && import.meta.env.API_KEY) {
-                    // @ts-ignore
-                    apiKey = import.meta.env.API_KEY;
-                }
-            } catch (e) {
-                // import.meta가 지원되지 않는 환경 무시
-            }
-        }
-
-        if (!apiKey) {
-           // 키가 없으면 조용히 폴백으로 전환 (에러 발생시키지 않음)
+        // Use process.env.GEMINI_API_KEY directly as mandated by guidelines.
+        if (!process.env.GEMINI_API_KEY) {
            console.warn("API Key not found, using fallback image.");
            if (isMounted) {
              setUseFallback(true);
@@ -62,11 +42,12 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
            return;
         }
 
-        const ai = new GoogleGenAI({ apiKey });
+        // Initialize GoogleGenAI right before generating content as per guidelines.
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
         const response = await ai.models.generateContent({
           model: 'gemini-2.5-flash-image',
           contents: {
-            parts: [{ text: `${prompt} | 2D flat minimalist illustration, red neon and black dark grey theme, high quality, cinematic lighting, vector graphic style` }],
+            parts: [{ text: `${prompt} | 2D flat vector graphic illustration, dark grey textured background, vibrant glowing neon red (#E50914) accents, pure white elements, dynamic perspective, corporate tech vibe, no photorealism, clean geometric shapes` }],
           },
           config: {
             imageConfig: {
@@ -77,9 +58,10 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
 
         if (!isMounted) return;
 
-        let foundImageUrl = null;
+        let foundImageUrl: string | null = null;
         if (response.candidates?.[0]?.content?.parts) {
           for (const part of response.candidates[0].content.parts) {
+            // Find the image part in the response.
             if (part.inlineData) {
               foundImageUrl = `data:image/png;base64,${part.inlineData.data}`;
               break;
@@ -95,7 +77,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
       } catch (err: any) {
         console.warn(`[AI GEN FAILED] ${alt}`, err);
         if (isMounted) {
-          // 429 에러(Quota Exceeded) 발생 시 세션에 기록하여 재시도 방지
+          // Handle quota exceeded error gracefully.
           if (err?.message?.includes('429') || err?.status === 429) {
             sessionStorage.setItem(SESSION_KEY, 'true');
           }
@@ -130,6 +112,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
           src={fallbackUrl}
           alt={alt}
           className={`${className} object-cover`}
+          referrerPolicy="no-referrer"
         />
     );
   }
@@ -139,6 +122,7 @@ const AIGeneratedImage: React.FC<AIGeneratedImageProps> = ({ prompt, alt, classN
       src={imageUrl}
       alt={alt}
       className={`${className} object-cover animate-fade-in`}
+      referrerPolicy="no-referrer"
     />
   );
 };
