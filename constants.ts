@@ -324,3 +324,5 @@ export const CULTURE_DATA: Content[] = [
   }
 ];
 
+
+// Portfolio media connected: 12 videos and 13 images.
