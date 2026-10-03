@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, TrendingUp } from 'lucide-react';
 import { Content, RowProps } from '../types';
 import AIGeneratedImage from './AIGeneratedImage';
 
-const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentClick }) => {
+const Row: React.FC<RowProps> = ({ title, data, isRanked, onContentClick }) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -41,8 +41,7 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
             <div 
               key={item.id} 
               className={`relative flex-shrink-0 cursor-pointer transition duration-300 ease-in-out md:hover:scale-105 hover:z-50 rounded-md overflow-hidden
-                ${isRanked ? 'h-32 md:h-44 w-[220px] md:w-[320px]' : 
-                  isLargeRow ? 'h-36 md:h-56 w-[220px] md:w-[380px]' : 'h-24 md:h-36 w-[140px] md:w-[220px]'}`}
+                ${isRanked ? 'h-32 md:h-44 w-[220px] md:w-[320px]' : 'aspect-video w-[220px] md:w-[320px]'}`}
               onClick={() => onContentClick(item)}
             >
               {isRanked ? (
