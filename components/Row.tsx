@@ -90,7 +90,7 @@ const Row: React.FC<RowProps> = ({ title, data, isLargeRow, isRanked, onContentC
                     <div className="hidden md:flex absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex-col justify-end p-4">
                         <div className="transform translate-y-2 group-hover:translate-y-0 transition duration-300">
                             <p className="text-white font-bold text-xs md:text-sm mb-1">{item.title}</p>
-                            <span className="text-[#46d369] text-[10px] font-bold">기여도 {item.matchScore}%</span>
+                            {item.matchScore != null && <span className="text-[#46d369] text-[10px] font-bold">기여도 {item.matchScore}%</span>}
                         </div>
                     </div>
                     <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/90 to-transparent">

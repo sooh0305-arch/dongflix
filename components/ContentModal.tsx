@@ -62,6 +62,7 @@ const ContentModal: React.FC<ModalProps> = ({ isOpen, content, onClose }) => {
         {/* Close Button */}
         <button 
           onClick={onClose}
+          aria-label="상세 화면 닫기"
           className="absolute top-4 right-4 z-[110] bg-[#181818]/60 backdrop-blur-md rounded-full p-2 hover:bg-[#333] transition"
         >
           <X className="w-5 h-5 md:w-6 md:h-6 text-white" />
@@ -96,6 +97,7 @@ const ContentModal: React.FC<ModalProps> = ({ isOpen, content, onClose }) => {
                       <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 md:px-4 pointer-events-none">
                           <button 
                               onClick={prevCard} 
+                              aria-label="이전 이미지"
                               disabled={cardIndex === 0}
                               className={`p-2 md:p-3 rounded-full bg-black/50 text-white pointer-events-auto transition hover:bg-black/80 disabled:opacity-0 ${cardIndex === 0 ? 'cursor-default' : 'cursor-pointer'}`}
                           >
@@ -103,6 +105,7 @@ const ContentModal: React.FC<ModalProps> = ({ isOpen, content, onClose }) => {
                           </button>
                           <button 
                               onClick={nextCard} 
+                              aria-label="다음 이미지"
                               disabled={cardIndex === (activeSubItem.images?.length || 0) - 1}
                               className={`p-2 md:p-3 rounded-full bg-black/50 text-white pointer-events-auto transition hover:bg-black/80 disabled:opacity-0 ${cardIndex === (activeSubItem.images?.length || 0) - 1 ? 'cursor-default' : 'cursor-pointer'}`}
                           >
@@ -146,9 +149,9 @@ const ContentModal: React.FC<ModalProps> = ({ isOpen, content, onClose }) => {
             {/* Left side */}
             <div>
               <div className="flex items-center space-x-3 mb-4 md:mb-6 text-xs md:text-sm font-medium">
-                <span className="text-[#46d369] font-bold">{content.matchScore}% 일치</span>
+                {content.matchScore != null && <span className="text-[#46d369] font-bold">{content.matchScore}% 일치</span>}
                 <span className="text-gray-400">{content.year || '2024'}</span>
-                <span className="border border-gray-500 px-1 text-[9px] md:text-[10px] text-gray-400 rounded-sm leading-none">4K</span>
+                {content.contentType === 'video' && <span className="border border-gray-500 px-1 text-[9px] md:text-[10px] text-gray-400 rounded-sm leading-none">HD</span>}
                 <span className="text-gray-400">{content.duration || 'Special'}</span>
               </div>
               
