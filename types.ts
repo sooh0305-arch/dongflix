@@ -23,6 +23,7 @@ export interface Content {
   description: string;
   tags: string[];
   imageUrl: string;
+  detailImageUrl?: string; // Header artwork shown only in the detail modal
   imagePrompt?: string; // Prompt for AI generation
   videoUrl?: string; 
   category: string;

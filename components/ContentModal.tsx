@@ -135,7 +135,7 @@ const ContentModal: React.FC<ModalProps> = ({ isOpen, content, onClose }) => {
                   </div>
               ) : (
                   <div className="relative h-[200px] md:h-[480px]">
-                      <img src={content.imageUrl} alt={content.title} className="w-full h-full object-cover brightness-[0.7]" referrerPolicy="no-referrer" />
+                      <img src={content.detailImageUrl || content.imageUrl} alt={content.title} className="w-full h-full object-cover brightness-[0.7]" referrerPolicy="no-referrer" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#181818] via-transparent to-transparent"></div>
                   </div>
               )}

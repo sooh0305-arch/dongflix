@@ -2,7 +2,7 @@
 import { Content } from './types';
 
 // GitHub에 저장한 웹용 포트폴리오 자료. AI Studio에서도 같은 URL로 표시합니다.
-const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/47ae08d1d8b395a1d9a0b0c374b68332919809e9/public/portfolio/';
+const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/643e347b223b6051749e3a50284398cbafb11410/public/portfolio/';
 const media = (filename: string) => `${MEDIA_BASE}${filename}`;
 
 
@@ -42,6 +42,7 @@ export const HERO_CONTENT: Content = {
 export const TRENDING_DATA: Content[] = [
   {
     id: 't-1',
+    detailImageUrl: media('hrd-funding-detail.png'),
     title: "정부지원훈련 운영 및 교육비 관리",
     subtitle: "누적 지원금 약 1억 8,680만 원 확보",
     amount: "1억 8,680만원",
@@ -72,6 +73,7 @@ export const TRENDING_DATA: Content[] = [
   },
   {
     id: 't-3',
+    detailImageUrl: media('hrd-openclass-detail.png'),
     title: "전사 공통직무 교육 '오픈클래스'",
     subtitle: "매월 정례 상시 학습 채널 기획·운영",
     description: "부서·직급과 무관하게 실무에 필요한 핵심 공통 역량을 매월 채우는 오픈형 정례 학습 시스템입니다. 매월 1회, 회차당 3시간 규모로 정례 운영하며 수요조사를 통해 주제와 강사를 차별화하여 배치합니다.",
@@ -96,6 +98,7 @@ export const TRENDING_DATA: Content[] = [
   },
   {
     id: 't-4',
+    detailImageUrl: media('hrd-onboarding-detail.png'),
     title: "기타 교육 운영 지원 및 온보딩",
     subtitle: "체계적인 교육 프로그램 기획 및 연수 운영",
     description: "신규 입사자 온보딩 프로그램 기획을 포함하여 사내 다양한 직무 연수 및 특화 프로그램을 세심하게 기획·운영 지원하고 있습니다.",
