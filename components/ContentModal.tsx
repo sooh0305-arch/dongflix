@@ -75,17 +75,21 @@ const ContentModal: React.FC<ModalProps> = ({ isOpen, content, onClose }) => {
                       <video 
                           key={activeSubItem.id}
                           src={activeSubItem.assetUrl} 
-                          controls 
+                          controls
+                          playsInline
+                          preload="metadata"
+                          poster={activeSubItem.posterUrl}
+                          aria-label={activeSubItem.title}
                           autoPlay
                           className="w-full h-full object-contain"
                       />
                   </div>
               ) : content.contentType === 'card' && activeSubItem?.images ? (
-                  <div className="relative aspect-square md:aspect-video w-full flex items-center justify-center bg-[#111]">
+                  <div className="relative w-full flex items-start justify-center bg-[#111]">
                       <img 
                           src={activeSubItem.images[cardIndex]} 
-                          alt="Card view" 
-                          className="max-h-full max-w-full object-contain transition-all duration-300" 
+                          alt={`${activeSubItem.title} ${cardIndex + 1}`} 
+                          className="w-full max-w-[800px] h-auto object-contain transition-all duration-300" 
                           referrerPolicy="no-referrer"
                       />
                       
@@ -211,7 +215,9 @@ const ContentModal: React.FC<ModalProps> = ({ isOpen, content, onClose }) => {
                            <span className="text-xl md:text-2xl font-bold text-gray-500 mr-4 md:mr-5 w-6 text-center">{index + 1}</span>
                            <div className="relative w-28 md:w-36 h-16 md:h-20 bg-[#2a2a2a] rounded overflow-hidden flex-shrink-0 mr-4 shadow-md">
                               <img 
-                                src={item.images ? item.images[0] : content.imageUrl} 
+                                src={item.images ? item.images[0] : (item.posterUrl || content.imageUrl)}
+                                alt={item.title}
+                                loading="lazy" 
                                 className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" 
                                 referrerPolicy="no-referrer"
                               />

@@ -1,6 +1,12 @@
 
 import { Content } from './types';
 
+// GitHub에 저장한 웹용 포트폴리오 자료. AI Studio에서도 같은 URL로 표시합니다.
+const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/e1c766b0a96017e0e7119cc1cb90a18ad4abfc94/public/portfolio/';
+const media = (filename: string) => `${MEDIA_BASE}${filename}`;
+
+
+
 export const HERO_CONTENT: Content = {
   id: 'hero-main',
   title: "The Hybrid HRD Specialist",
@@ -116,14 +122,23 @@ export const ORIGINALS_DATA: Content[] = [
     subtitle: "Motion, Variety, Product Video & LMS Content",
     description: "사내 LMS '세라원아카데미' 운영 및 AI 제작 공정 도입을 통해 외주 구매 없이 모션그래픽, 예능형 사내 콘텐츠, 시네마틱 제품 영상 등 총 103편의 교육·홍보 영상을 기획·촬영·편집했습니다.",
     tags: ['#Video', '#Production', '#Editing', '#MotionGraphics', '#LMS', '#AI_공정'],
-    imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%98%81%EC%83%81%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=a7c29274-cdab-445d-8b3f-7643ec08de81",
+    imageUrl: media('cera-lab-ep02-poster.webp'),
     category: 'originals',
     matchScore: 99,
     contentType: 'video',
     subItems: [
-      { id: 'v-1', title: '모션그래픽', description: '브랜드 아이덴티티를 시각화한 감각적인 모션그래픽 영상입니다.', duration: '2m', assetUrl: 'https://www.w3schools.com/html/mov_bbb.mp4' },
-      { id: 'v-2', title: '세라랩 (Cera-Lab)', description: '임직원 궁금증 해결을 위한 사내 예능형 콘텐츠 시리즈입니다.', duration: '5m', assetUrl: 'https://www.w3schools.com/html/movie.mp4' },
-      { id: 'v-3', title: '제품영상', description: '제품의 USP를 강조한 고퀄리티 시네마틱 홍보 영상입니다.', duration: '3m', assetUrl: 'https://www.w3schools.com/html/mov_bbb.mp4' }
+      { id: "v-cera-lab-ep02", title: "세라랩 EP.02", description: "사내 예능형 교육 콘텐츠 세라랩 영상입니다.", duration: "4:08", assetUrl: media('cera-lab-ep02.mp4'), posterUrl: media('cera-lab-ep02-poster.webp') },
+      { id: "v-company-introduction", title: "회사소개영상", description: "회사 소개를 위한 홍보 영상입니다.", duration: "4:17", assetUrl: media('company-introduction.mp4'), posterUrl: media('company-introduction-poster.webp') },
+      { id: "v-celltron", title: "셀트론 제품영상", description: "셀트론 제품 소개 영상입니다.", duration: "1:46", assetUrl: media('celltron.mp4'), posterUrl: media('celltron-poster.webp') },
+      { id: "v-celltron-chair-bluetooth", title: "셀트론체어 블루투스 안내", description: "셀트론체어 블루투스 연결 및 사용 안내 영상입니다.", duration: "1:49", assetUrl: media('celltron-chair-bluetooth.mp4'), posterUrl: media('celltron-chair-bluetooth-poster.webp') },
+      { id: "v-celltron-e2-guide", title: "셀트론 E2 사용법", description: "셀트론 E2 제품 사용법 안내 영상입니다.", duration: "1:25", assetUrl: media('celltron-e2-guide.mp4'), posterUrl: media('celltron-e2-guide-poster.webp') },
+      { id: "v-pause-m4", title: "파우제 M4 특장점", description: "파우제 M4의 제품 특장점을 소개하는 영상입니다.", duration: "1:54", assetUrl: media('pause-m4.mp4'), posterUrl: media('pause-m4-poster.webp') },
+      { id: "v-hair-miracle", title: "헤어미라클 제품영상", description: "헤어미라클 제품 소개 영상입니다.", duration: "1:34", assetUrl: media('hair-miracle.mp4'), posterUrl: media('hair-miracle-poster.webp') },
+      { id: "v-hair-miracle-ad", title: "헤어미라클 광고소재", description: "헤어미라클 광고용 영상 소재입니다.", duration: "0:35", assetUrl: media('hair-miracle-ad.mp4'), posterUrl: media('hair-miracle-ad-poster.webp') },
+      { id: "v-subscription-service", title: "구독서비스의 중요성", description: "구독서비스의 중요성을 전달하는 교육 영상입니다.", duration: "6:44", assetUrl: media('subscription-service.mp4'), posterUrl: media('subscription-service-poster.webp') },
+      { id: "v-thanks-ceragem-interview", title: "1분기 땡스세라제머 인터뷰", description: "땡스세라제머 인터뷰 영상입니다.", duration: "10:41", assetUrl: media('thanks-ceragem-interview.mp4'), posterUrl: media('thanks-ceragem-interview-poster.webp') },
+      { id: "v-leader-workshop-interview", title: "리더워크샵 팀원 인터뷰", description: "리더워크샵을 위한 팀원 인터뷰 영상입니다.", duration: "7:53", assetUrl: media('leader-workshop-interview.mp4'), posterUrl: media('leader-workshop-interview-poster.webp') },
+      { id: "v-screensaver", title: "화면보호기 영상", description: "사내 화면보호기용으로 제작한 영상입니다.", duration: "0:58", assetUrl: media('screensaver.mp4'), posterUrl: media('screensaver-poster.webp') }
     ]
   },
   {
@@ -132,14 +147,15 @@ export const ORIGINALS_DATA: Content[] = [
     subtitle: "Micro Learning & Branding",
     description: "핵심 직무 정보 및 건강 팁을 모바일 친화적으로 전달하는 카드뉴스 82편을 직접 디자인·제작했습니다.",
     tags: ['#CardNews', '#Design', '#MicroLearning'],
-    imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=6f1719aa-c439-49b7-8e73-e421740b83ea",
+    imageUrl: media('card-news-1.webp'),
     category: 'originals',
     matchScore: 96,
     contentType: 'card',
     subItems: [
-      { id: 'c-1', title: '7해빗 카드뉴스', description: '카카오톡 채널 발송용 습관 형성 마이크로 러닝 콘텐츠입니다.', images: ['https://picsum.photos/seed/c1-1/800/800', 'https://picsum.photos/seed/c1-2/800/800', 'https://picsum.photos/seed/c1-3/800/800'] },
-      { id: 'c-2', title: '중심을 잡는 척추지식', description: '임직원 건강 관리를 위한 핵심 척추 건강 정보 시리즈입니다.', images: ['https://picsum.photos/seed/c2-1/800/800', 'https://picsum.photos/seed/c2-2/800/800'] },
-      { id: 'c-3', title: '의미있는 뷰티사전', description: '뷰티/헬스케어 트렌드를 알기 쉽게 정리한 카드뉴스입니다.', images: ['https://picsum.photos/seed/c3-1/800/800', 'https://picsum.photos/seed/c3-2/800/800', 'https://picsum.photos/seed/c3-3/800/800'] }
+      { id: "c-1", title: "통증과 몸의 신호", description: "척추와 통증에 관한 건강정보 카드뉴스입니다.", images: [media('card-news-1.webp')] },
+      { id: "c-2", title: "척추 피로 관리", description: "디지털 기기 사용과 척추 피로를 다룬 카드뉴스입니다.", images: [media('card-news-2.webp')] },
+      { id: "c-3", title: "건강정보: 두통", description: "두통의 원인과 정보를 시각화한 카드뉴스입니다.", images: [media('card-news-3.webp')] },
+      { id: "c-4", title: "건강정보: 피부", description: "피부 구조를 설명하는 건강정보 카드뉴스입니다.", images: [media('card-news-4.webp')] }
     ]
   },
   {
@@ -148,14 +164,29 @@ export const ORIGINALS_DATA: Content[] = [
     subtitle: "Story-telling Education",
     description: "친근한 만화 기법을 적용해 몰입도를 증대시킨 에듀테인먼트 사내 웹툰 56편을 연재·제작했습니다.",
     tags: ['#Webtoon', '#Illustration', '#Edutainment'],
-    imageUrl: "https://firebasestorage.googleapis.com/v0/b/dong-flix.firebasestorage.app/o/%EC%9B%B9%ED%88%B0%EC%BD%98%ED%85%90%EC%B8%A0.png?alt=media&token=a82e9ce7-133a-4926-ae49-4c8307c871ee",
+    imageUrl: media('spine-thumbnail.webp'),
     category: 'originals',
     matchScore: 97,
     contentType: 'webtoon',
     subItems: [
-      { id: 'w-1', title: '전지적 척추시점', description: '척추의 입장에서 바라본 일상 건강 관리 웹툰입니다.', images: ['https://picsum.photos/seed/w1-1/600/1200', 'https://picsum.photos/seed/w1-2/600/1200', 'https://picsum.photos/seed/w1-3/600/1200'] },
-      { id: 'w-2', title: '코어MASTER', description: '코어 근육 강화 및 바른 자세 교육을 위한 에듀테인먼트 웹툰입니다.', images: ['https://picsum.photos/seed/w2-1/600/1200', 'https://picsum.photos/seed/w2-2/600/1200'] },
-      { id: 'w-3', title: '스마트 꿀TIP', description: '업무 효율을 높이는 스마트한 도구 사용법을 다룬 꿀팁 웹툰입니다.', images: ['https://picsum.photos/seed/w3-1/600/1200', 'https://picsum.photos/seed/w3-2/600/1200', 'https://picsum.photos/seed/w3-3/600/1200'] }
+      { id: "w-1", title: "전지적 척추시점 — 표지", description: "전지적 척추시점 시리즈의 표지 디자인입니다.", images: [media('spine-cover.webp')] },
+      { id: "w-2", title: "전지적 척추시점 — 썸네일", description: "시리즈 홍보용 썸네일 디자인입니다.", images: [media('spine-thumbnail.webp')] },
+      { id: "w-3", title: "전지적 척추시점 — 행사 현수막", description: "행사 공간에 활용한 현수막 디자인입니다.", images: [media('spine-event-banner.webp')] }
+    ]
+  },
+  {
+    id: 'o-4',
+    title: '교육 홍보·모션그래픽 디자인',
+    subtitle: 'Banner & Motion Graphics',
+    description: '교육 홍보 배너와 모션그래픽 제작 이미지를 확인할 수 있습니다.',
+    tags: ['#홍보디자인', '#모션그래픽', '#교육콘텐츠'],
+    imageUrl: media('motion-graphics.webp'),
+    category: 'originals',
+    contentType: 'card',
+    subItems: [
+      { id: "design-motion", title: "모션그래픽 제작 이미지", description: "모션그래픽 영상의 제작 이미지입니다.", images: [media('motion-graphics.webp')] },
+      { id: "design-academy", title: "세라원아카데미 홍보 배너", description: "세라원아카데미 교육 채널 홍보 배너입니다.", images: [media('academy-banner.webp')] },
+      { id: "design-cera-lab", title: "세라랩 웰푸드 썸네일", description: "세라랩 웰푸드 콘텐츠를 위한 썸네일 디자인입니다.", images: [media('cera-lab-wellfood.webp')] }
     ]
   }
 ];
@@ -234,21 +265,15 @@ export const CULTURE_DATA: Content[] = [
     subtitle: "기업 핵심 가치 및 조직문화 캠페인 비주얼 브랜딩",
     description: "기업의 핵심 가치와 일하는 방식을 시각적으로 형상화하여 사무 공간 및 사내 채널에 배포하는 조직문화 캠페인 포스터, 배너, 카드뉴스를 직접 기획하고 디자인하여 임직원들이 기업 문화를 자연스럽게 내재화하도록 지원했습니다.",
     tags: ['#조직문화포스터', '#비주얼브랜딩', '#캠페인디자인', '#핵심가치내재화'],
-    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
+    imageUrl: media('culture-poster-1.webp'),
+    contentType: 'card',
     category: 'culture',
     matchScore: 97,
     year: '2025 ~ 현재',
     subItems: [
-      {
-        id: 'cul-poster-1',
-        title: '핵심 가치 내재화 포스터 및 배너 직접 기획·디자인',
-        description: '사무 공간 인테리어와 사내 인트라넷 환경에 최적화된 비주얼 그래픽으로 핵심 가치와 행동 원칙을 직관적으로 전달.'
-      },
-      {
-        id: 'cul-poster-2',
-        title: '사내 캠페인 및 제도 안내 비주얼라이징',
-        description: '텍스트 중심의 복잡한 사내 정책과 제도를 카드뉴스와 포스터로 시각화하여 구성원의 이해도와 공감대 형성.'
-      }
+      { id: "cul-poster-1", title: "조직문화 포스터 1", description: "고객 관점에서 생각하는 일하는 방식을 담은 포스터입니다.", images: [media('culture-poster-1.webp')] },
+      { id: "cul-poster-2", title: "조직문화 포스터 2", description: "조직 내 존중과 소통을 담은 포스터입니다.", images: [media('culture-poster-2.webp')] },
+      { id: "cul-poster-3", title: "조직문화 포스터 3", description: "일하는 태도와 행동 원칙을 전달하는 포스터입니다.", images: [media('culture-poster-3.webp')] }
     ]
   },
   {

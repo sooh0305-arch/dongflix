@@ -4,6 +4,7 @@ export interface SubItem {
   title: string;
   description: string;
   duration?: string;
+  posterUrl?: string; // Video thumbnail
   assetUrl?: string; // Video URL or main image
   images?: string[]; // For card news or webtoon multi-images
 }
