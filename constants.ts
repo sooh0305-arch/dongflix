@@ -2,7 +2,7 @@
 import { Content } from './types';
 
 // GitHub에 저장한 웹용 포트폴리오 자료. AI Studio에서도 같은 URL로 표시합니다.
-const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/643e347b223b6051749e3a50284398cbafb11410/public/portfolio/';
+const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/6feb3316709b293b43ff10ccdac7c5fbc0e0fec9/public/portfolio/';
 const media = (filename: string) => `${MEDIA_BASE}${filename}`;
 
 
