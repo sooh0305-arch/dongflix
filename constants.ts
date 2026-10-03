@@ -2,7 +2,7 @@
 import { Content } from './types';
 
 // GitHub에 저장한 웹용 포트폴리오 자료. AI Studio에서도 같은 URL로 표시합니다.
-const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/e1c766b0a96017e0e7119cc1cb90a18ad4abfc94/public/portfolio/';
+const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/285c47b4e31e1e7d66b1791627803268430da8a0/public/portfolio/';
 const media = (filename: string) => `${MEDIA_BASE}${filename}`;
 
 
@@ -118,11 +118,11 @@ export const TRENDING_DATA: Content[] = [
 export const ORIGINALS_DATA: Content[] = [
   {
     id: 'o-1',
-    title: "영상 콘텐츠 시리즈",
+    title: "영상 콘텐츠",
     subtitle: "Motion, Variety, Product Video & LMS Content",
     description: "사내 LMS '세라원아카데미' 운영 및 AI 제작 공정 도입을 통해 외주 구매 없이 모션그래픽, 예능형 사내 콘텐츠, 시네마틱 제품 영상 등 총 103편의 교육·홍보 영상을 기획·촬영·편집했습니다.",
     tags: ['#Video', '#Production', '#Editing', '#MotionGraphics', '#LMS', '#AI_공정'],
-    imageUrl: media('cera-lab-ep02-poster.webp'),
+    imageUrl: media('video-thumbnail.png'),
     category: 'originals',
     matchScore: 99,
     contentType: 'video',
@@ -143,11 +143,11 @@ export const ORIGINALS_DATA: Content[] = [
   },
   {
     id: 'o-2',
-    title: "카드뉴스 콘텐츠 시리즈",
+    title: "카드뉴스",
     subtitle: "Micro Learning & Branding",
     description: "핵심 직무 정보 및 건강 팁을 모바일 친화적으로 전달하는 카드뉴스 82편을 직접 디자인·제작했습니다.",
     tags: ['#CardNews', '#Design', '#MicroLearning'],
-    imageUrl: media('card-news-1.webp'),
+    imageUrl: media('cardnews-thumbnail.png'),
     category: 'originals',
     matchScore: 96,
     contentType: 'card',
@@ -160,11 +160,11 @@ export const ORIGINALS_DATA: Content[] = [
   },
   {
     id: 'o-3',
-    title: "웹툰 콘텐츠 시리즈",
+    title: "웹툰",
     subtitle: "Story-telling Education",
     description: "친근한 만화 기법을 적용해 몰입도를 증대시킨 에듀테인먼트 사내 웹툰 56편을 연재·제작했습니다.",
     tags: ['#Webtoon', '#Illustration', '#Edutainment'],
-    imageUrl: media('spine-thumbnail.webp'),
+    imageUrl: media('webtoon-thumbnail.png'),
     category: 'originals',
     matchScore: 97,
     contentType: 'webtoon',
@@ -172,21 +172,6 @@ export const ORIGINALS_DATA: Content[] = [
       { id: "w-1", title: "전지적 척추시점 — 표지", description: "전지적 척추시점 시리즈의 표지 디자인입니다.", images: [media('spine-cover.webp')] },
       { id: "w-2", title: "전지적 척추시점 — 썸네일", description: "시리즈 홍보용 썸네일 디자인입니다.", images: [media('spine-thumbnail.webp')] },
       { id: "w-3", title: "전지적 척추시점 — 행사 현수막", description: "행사 공간에 활용한 현수막 디자인입니다.", images: [media('spine-event-banner.webp')] }
-    ]
-  },
-  {
-    id: 'o-4',
-    title: '교육 홍보·모션그래픽 디자인',
-    subtitle: 'Banner & Motion Graphics',
-    description: '교육 홍보 배너와 모션그래픽 제작 이미지를 확인할 수 있습니다.',
-    tags: ['#홍보디자인', '#모션그래픽', '#교육콘텐츠'],
-    imageUrl: media('motion-graphics.webp'),
-    category: 'originals',
-    contentType: 'card',
-    subItems: [
-      { id: "design-motion", title: "모션그래픽 제작 이미지", description: "모션그래픽 영상의 제작 이미지입니다.", images: [media('motion-graphics.webp')] },
-      { id: "design-academy", title: "세라원아카데미 홍보 배너", description: "세라원아카데미 교육 채널 홍보 배너입니다.", images: [media('academy-banner.webp')] },
-      { id: "design-cera-lab", title: "세라랩 웰푸드 썸네일", description: "세라랩 웰푸드 콘텐츠를 위한 썸네일 디자인입니다.", images: [media('cera-lab-wellfood.webp')] }
     ]
   }
 ];
@@ -325,4 +310,4 @@ export const CULTURE_DATA: Content[] = [
 ];
 
 
-// Portfolio media connected: 12 videos and 13 images.
+// Creative categories: video, card news, webtoon. Thumbnails supplied by owner.
