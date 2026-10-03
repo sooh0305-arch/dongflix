@@ -1,0 +1,330 @@
+[
+  {
+    "source": "모션그래픽 영상.jpg",
+    "file": "motion-graphics.webp",
+    "type": "image",
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "originalDimensions": [
+      1920,
+      1080
+    ],
+    "originalBytes": 759493,
+    "bytes": 122770,
+    "sha256": "74d1b7bb53803f50747d46a08235faa0a4d6ed67c6ad6b94849bc6c107532d16"
+  },
+  {
+    "source": "세라랩+웰푸드+썸네일.png",
+    "file": "cera-lab-wellfood.webp",
+    "type": "image",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "originalDimensions": [
+      1280,
+      720
+    ],
+    "originalBytes": 985986,
+    "bytes": 68566,
+    "sha256": "a9d87ebcfd324a50b4cb6288d9d84892f5c1f628e5ef8dfe30cbab4051a32317"
+  },
+  {
+    "source": "세라원아카데미 홍보 배너2.jpg",
+    "file": "academy-banner.webp",
+    "type": "image",
+    "dimensions": [
+      1915,
+      3600
+    ],
+    "originalDimensions": [
+      2500,
+      4700
+    ],
+    "originalBytes": 2459525,
+    "bytes": 198034,
+    "sha256": "2897794ab64bc151a04e4d72d033e5a45f26750152074d0db59c4cba952090db"
+  },
+  {
+    "source": "전지적 척추시점 썸네일.jpg",
+    "file": "spine-thumbnail.webp",
+    "type": "image",
+    "dimensions": [
+      1280,
+      752
+    ],
+    "originalDimensions": [
+      1280,
+      752
+    ],
+    "originalBytes": 568040,
+    "bytes": 96954,
+    "sha256": "9eb0cb5ef39fa3f1795a2e72055b6906d8b887d705dc85c0677d93f5f1b7499d"
+  },
+  {
+    "source": "전지적 척추시점 표지.jpg",
+    "file": "spine-cover.webp",
+    "type": "image",
+    "dimensions": [
+      2400,
+      3362
+    ],
+    "originalDimensions": [
+      2504,
+      3508
+    ],
+    "originalBytes": 2542368,
+    "bytes": 151096,
+    "sha256": "1b0bcec200e451ef8681253f543fc4abb98e1800786f697d30406a52f5a5e954"
+  },
+  {
+    "source": "전지적 척추시점 행사 현수막.jpg",
+    "file": "spine-event-banner.webp",
+    "type": "image",
+    "dimensions": [
+      2400,
+      800
+    ],
+    "originalDimensions": [
+      21260,
+      7087
+    ],
+    "originalBytes": 19571014,
+    "bytes": 100278,
+    "sha256": "5713ef5542741640cd4d73f3c7001bfeb4ab14bd89312247dbcf1e984c945ac9"
+  },
+  {
+    "source": "조직문화 포스터1.jpg",
+    "file": "culture-poster-1.webp",
+    "type": "image",
+    "dimensions": [
+      2400,
+      3394
+    ],
+    "originalDimensions": [
+      4961,
+      7016
+    ],
+    "originalBytes": 1653740,
+    "bytes": 190248,
+    "sha256": "fd77f8b780c7fcad0558f6a706b8b15f605ba84ef13ddf0bd28e0366fe5bc133"
+  },
+  {
+    "source": "조직문화 포스터2.jpg",
+    "file": "culture-poster-2.webp",
+    "type": "image",
+    "dimensions": [
+      2400,
+      3390
+    ],
+    "originalDimensions": [
+      4984,
+      7039
+    ],
+    "originalBytes": 5181787,
+    "bytes": 286686,
+    "sha256": "9074434a5ccb0f755e2936029738d53f47f70772d285e1a6eda2ed713f229287"
+  },
+  {
+    "source": "조직문화 포스터3.jpg",
+    "file": "culture-poster-3.webp",
+    "type": "image",
+    "dimensions": [
+      2400,
+      3394
+    ],
+    "originalDimensions": [
+      4961,
+      7016
+    ],
+    "originalBytes": 5397138,
+    "bytes": 251462,
+    "sha256": "9fea415326d11c45325aec4eb025cc4937a4ba7beeaa89a2bc8b2745d70c40ef"
+  },
+  {
+    "source": "카드뉴스1.jpg",
+    "file": "card-news-1.webp",
+    "type": "image",
+    "dimensions": [
+      900,
+      1200
+    ],
+    "originalDimensions": [
+      900,
+      1200
+    ],
+    "originalBytes": 618607,
+    "bytes": 108698,
+    "sha256": "3300f76007309a653cb62c80c5bd3f2dba29a581654df2687fe128461c28ce7c"
+  },
+  {
+    "source": "카드뉴스2.jpg",
+    "file": "card-news-2.webp",
+    "type": "image",
+    "dimensions": [
+      2000,
+      2000
+    ],
+    "originalDimensions": [
+      2000,
+      2000
+    ],
+    "originalBytes": 1289587,
+    "bytes": 196564,
+    "sha256": "ce0fcd3beff0d40683ea5ab7a9cdea36f970f9e32edcbbce515d423e2362cf92"
+  },
+  {
+    "source": "카드뉴스3.jpg",
+    "file": "card-news-3.webp",
+    "type": "image",
+    "dimensions": [
+      2000,
+      2000
+    ],
+    "originalDimensions": [
+      2000,
+      2000
+    ],
+    "originalBytes": 908233,
+    "bytes": 152190,
+    "sha256": "b0f696eec9a8af1322c38838dac7f6d6512e3368a5e7d3849feb664ea5e7f00a"
+  },
+  {
+    "source": "카드뉴스4.jpg",
+    "file": "card-news-4.webp",
+    "type": "image",
+    "dimensions": [
+      2000,
+      2000
+    ],
+    "originalDimensions": [
+      2000,
+      2000
+    ],
+    "originalBytes": 1074395,
+    "bytes": 134212,
+    "sha256": "146909eb707fea8a923fa3be68aafb67c996ae6542850110b0827a794de0eaf1"
+  },
+  {
+    "source": "1분기 땡스세라제머 인터뷰영상.mp4",
+    "file": "thanks-ceragem-interview.mp4",
+    "poster": "thanks-ceragem-interview-poster.webp",
+    "type": "video",
+    "durationSeconds": 640.58,
+    "originalBytes": 695002072,
+    "bytes": 32553358,
+    "sha256": "d98aaa94e8cfb3b73f5c753f946692449213d4e7f04e4bef78e363e3c1906884"
+  },
+  {
+    "source": "구독서비스의 중요성 영상.mp4",
+    "file": "subscription-service.mp4",
+    "poster": "subscription-service-poster.webp",
+    "type": "video",
+    "durationSeconds": 403.8,
+    "originalBytes": 322102451,
+    "bytes": 10393124,
+    "sha256": "eeae70a37da7a3f3956fbcde6f7764bead6671c2f48d342b3b57ab18d5612a01"
+  },
+  {
+    "source": "리더워크샵 팀원 인터뷰.mp4",
+    "file": "leader-workshop-interview.mp4",
+    "poster": "leader-workshop-interview-poster.webp",
+    "type": "video",
+    "durationSeconds": 472.67,
+    "originalBytes": 872035990,
+    "bytes": 16472335,
+    "sha256": "244f878ae576906af8bde58556019e9ed6ea36ef7fffd22c037607e6f8813f4a"
+  },
+  {
+    "source": "세라랩_ep02_최종_0228.mp4",
+    "file": "cera-lab-ep02.mp4",
+    "poster": "cera-lab-ep02-poster.webp",
+    "type": "video",
+    "durationSeconds": 247.68,
+    "originalBytes": 323508891,
+    "bytes": 14462998,
+    "sha256": "bb5614fdc80845485d71e3f68f749ff10b8cd518a1f14da9d81964a6ee2a359d"
+  },
+  {
+    "source": "셀트론 영상.mp4",
+    "file": "celltron.mp4",
+    "poster": "celltron-poster.webp",
+    "type": "video",
+    "durationSeconds": 105.67,
+    "originalBytes": 35581173,
+    "bytes": 4927228,
+    "sha256": "9337dbde1d809ec219aa536033b8fee79e975d4f67fb046339a9e0c3d5dce055"
+  },
+  {
+    "source": "셀트론체어 블루투스 수정본.mp4",
+    "file": "celltron-chair-bluetooth.mp4",
+    "poster": "celltron-chair-bluetooth-poster.webp",
+    "type": "video",
+    "durationSeconds": 109.38,
+    "originalBytes": 212242590,
+    "bytes": 4435383,
+    "sha256": "c0b65734fc2ecbf4b72e9ca66a8a5b8a022c30ea60d9bea76ff510a4e6af503f"
+  },
+  {
+    "source": "셀트론E2 사용법_수정본 영상.mp4",
+    "file": "celltron-e2-guide.mp4",
+    "poster": "celltron-e2-guide-poster.webp",
+    "type": "video",
+    "durationSeconds": 84.85,
+    "originalBytes": 209375252,
+    "bytes": 2826441,
+    "sha256": "341b0ee50e32694d6305558fdbafe17930943ed49c97c6fc8f23023c7f2376e1"
+  },
+  {
+    "source": "제품 파우제M4 특장점 수정본.mp4",
+    "file": "pause-m4.mp4",
+    "poster": "pause-m4-poster.webp",
+    "type": "video",
+    "durationSeconds": 114.42,
+    "originalBytes": 64762136,
+    "bytes": 3053730,
+    "sha256": "1d53ba1d4dc5d1bc4ced1f751eb1038768c9516de95da6892606ae0171ecd4ca"
+  },
+  {
+    "source": "제품 헤어미라클 영상.mp4",
+    "file": "hair-miracle.mp4",
+    "poster": "hair-miracle-poster.webp",
+    "type": "video",
+    "durationSeconds": 93.89,
+    "originalBytes": 223093075,
+    "bytes": 3398310,
+    "sha256": "499b0abd091246cad2d424bfe92ca5d40cd7c8706e97e3c0973ffbfdcfec5412"
+  },
+  {
+    "source": "헤어미라클_광고소재_Clean.mp4",
+    "file": "hair-miracle-ad.mp4",
+    "poster": "hair-miracle-ad-poster.webp",
+    "type": "video",
+    "durationSeconds": 35.17,
+    "originalBytes": 44262227,
+    "bytes": 1517182,
+    "sha256": "925a0266338bce25581963fd36770d482da0f7777ada3d0329621d3cc0d951b5"
+  },
+  {
+    "source": "화면보호기 영상_20240724.mp4",
+    "file": "screensaver.mp4",
+    "poster": "screensaver-poster.webp",
+    "type": "video",
+    "durationSeconds": 58.02,
+    "originalBytes": 67811713,
+    "bytes": 3182258,
+    "sha256": "bd76b61f4e821b0106cb586a3e283be744d54e2aa5ce6b6ea66aafd1f49afc8b"
+  },
+  {
+    "source": "회사소개영상 최종.mp4",
+    "file": "company-introduction.mp4",
+    "poster": "company-introduction-poster.webp",
+    "type": "video",
+    "durationSeconds": 257.12,
+    "originalBytes": 481393744,
+    "bytes": 12454811,
+    "sha256": "b977660f4a65da9184b759470a08c75b57c570e7413c517b46370de8f6f70a75"
+  }
+]
