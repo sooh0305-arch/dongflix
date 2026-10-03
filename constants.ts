@@ -2,7 +2,7 @@
 import { Content } from './types';
 
 // GitHub에 저장한 웹용 포트폴리오 자료. AI Studio에서도 같은 URL로 표시합니다.
-const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/285c47b4e31e1e7d66b1791627803268430da8a0/public/portfolio/';
+const MEDIA_BASE = 'https://raw.githubusercontent.com/sooh0305-arch/dongflix/47ae08d1d8b395a1d9a0b0c374b68332919809e9/public/portfolio/';
 const media = (filename: string) => `${MEDIA_BASE}${filename}`;
 
 
@@ -183,7 +183,7 @@ export const TECH_DATA: Content[] = [
     subtitle: "Google AI Studio, Claude, GPT 활용 사내 웹 서비스 직접 개발",
     description: "Google AI Studio, Claude, ChatGPT 등 생성형 AI 모델과 웹 기술을 활용하여, 외주 용역 없이 제도를 기획한 작성자가 직접 사내 웹 플랫폼을 구축하고 배포·운영합니다.",
     tags: ['#바이브코딩', '#ThankYou_CERAGEM', '#AI_Studio', '#Claude', '#GPT', '#React', '#Firebase'],
-    imageUrl: "/vibe_coding.svg",
+    imageUrl: media('vibe-coding-thumbnail.png'),
     category: 'tech',
     matchScore: 100,
     year: '2026.05 ~ 현재',
@@ -201,7 +201,7 @@ export const TECH_DATA: Content[] = [
     subtitle: "전사 AI 리터러시 및 사내 AI 에이전트 활용 과정 기획·운영",
     description: "직급별·직군별로 요구되는 AI 활용 레벨을 다각도로 분석하여, 리더/매니저 대상 맞춤형 AI 리터러시 교육과 사내 AI 에이전트 'CERA Agent'의 현장 적용 교육을 기획 및 총괄 운영했습니다.",
     tags: ['#AI교육', '#AI리터러시', '#CERA_Agent', '#생성형AI', '#업무자동화', '#정부지원금4800만'],
-    imageUrl: "/ai_education.svg",
+    imageUrl: media('ai-education-thumbnail.png'),
     category: 'tech',
     matchScore: 99,
     year: '2025.09 ~ 2026.07',
@@ -227,7 +227,7 @@ export const CULTURE_DATA: Content[] = [
     subtitle: "소통플러스 — 사내 라이브 방송 & 실시간 커뮤니케이션",
     description: "일방향 공지 형태에서 벗어나 경영진과 구성원이 직접 대화하고 소통하는 사내 라이브 방송 '소통플러스'를 기획·운영했습니다. 주제 선정, 큐시트·대본 작성, 출연자 섭외, 송출, 실시간 Q&A까지 전 과정을 내부에서 직접 전담하여 사내 소통과 유대감을 강화했습니다.",
     tags: ['#사내라이브방송', '#소통플러스', '#실시간소통', '#사내커뮤니케이션', '#내재화'],
-    imageUrl: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
+    imageUrl: media('live-broadcast-thumbnail.png'),
     category: 'culture',
     matchScore: 99,
     year: '2025.04 ~ 현재',
@@ -250,7 +250,7 @@ export const CULTURE_DATA: Content[] = [
     subtitle: "기업 핵심 가치 및 조직문화 캠페인 비주얼 브랜딩",
     description: "기업의 핵심 가치와 일하는 방식을 시각적으로 형상화하여 사무 공간 및 사내 채널에 배포하는 조직문화 캠페인 포스터, 배너, 카드뉴스를 직접 기획하고 디자인하여 임직원들이 기업 문화를 자연스럽게 내재화하도록 지원했습니다.",
     tags: ['#조직문화포스터', '#비주얼브랜딩', '#캠페인디자인', '#핵심가치내재화'],
-    imageUrl: media('culture-poster-1.webp'),
+    imageUrl: media('culture-poster-thumbnail.png'),
     contentType: 'card',
     category: 'culture',
     matchScore: 97,
@@ -267,7 +267,7 @@ export const CULTURE_DATA: Content[] = [
     subtitle: "임직원 직접 참여형 공감 웹드라마 프로젝트",
     description: "직원들이 직접 기획, 연출, 배우로 참여한 사내 웹드라마 프로젝트입니다. 조직 내 소통 부재와 세대 갈등, 업무 현장의 생생한 에피소드를 유쾌하고 진솔하게 풀어내어 전사적 공감대와 유대감을 이끌어냈습니다.",
     tags: ['#사내웹드라마', '#임직원참여', '#조직문화활성화', '#공감스토리'],
-    imageUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
+    imageUrl: media('web-drama-thumbnail.png'),
     category: 'culture',
     matchScore: 98,
     year: '2024',
@@ -290,7 +290,7 @@ export const CULTURE_DATA: Content[] = [
     subtitle: "참여형 퀴즈 이벤트, 타운홀 미팅 & 팀 빌딩",
     description: "정보보안·건강 등 필수 전달사항을 퀴즈 이벤트로 재구성하여 자발적 열람을 유도하고, 타운홀 미팅 및 팀 빌딩 이벤트를 기획·운영하여 구성원 간의 친목 도모와 건강한 소통 문화를 정착시켰습니다.",
     tags: ['#기타조직문화', '#참여형이벤트', '#퀴즈이벤트', '#타운홀미팅', '#팀빌딩'],
-    imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
+    imageUrl: media('culture-activities-thumbnail.png'),
     category: 'culture',
     matchScore: 96,
     year: '2023 ~ 현재',
